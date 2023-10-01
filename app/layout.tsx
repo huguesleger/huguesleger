@@ -1,3 +1,4 @@
+import Cursor from "@/components/layout/Cursor";
 import ScrollLoco from "@/components/layout/ScrollLoco";
 import type { Metadata } from "next";
 import "../scss/main.scss";
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body>
         <div id="app" className="app">
           <AppContextProvider>
+            <Cursor />
             <ScrollLoco>{children}</ScrollLoco>
           </AppContextProvider>
         </div>
