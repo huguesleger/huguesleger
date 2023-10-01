@@ -1,6 +1,7 @@
-// import './globals.css'
+import ScrollLoco from "@/components/layout/ScrollLoco";
 import type { Metadata } from "next";
 import "../scss/main.scss";
+import { AppContextProvider } from "./context/AppContext";
 
 export const metadata: Metadata = {
   title: "Hugues Leger - creatif developpeur",
@@ -39,9 +40,9 @@ export default function RootLayout({
       </head>
       <body>
         <div id="app" className="app">
-          {/* <Loader />
-        <NavBar /> */}
-          {children}
+          <AppContextProvider>
+            <ScrollLoco>{children}</ScrollLoco>
+          </AppContextProvider>
         </div>
       </body>
     </html>
