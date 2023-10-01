@@ -1,6 +1,9 @@
 "use client";
-import ScrollLoco from "@/components/layout/ScrollLoco";
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+
+interface Props {
+  children: ReactNode;
+}
 
 type AppContextType = {
   pageName: string;
@@ -12,7 +15,7 @@ const AppContext = createContext<AppContextType>({
   setPageName: () => {},
 });
 
-export const AppContextProvider = ({ children }: any) => {
+export const AppContextProvider = ({ children }: Props) => {
   const [pageName, setPageName] = useState("");
 
   return (

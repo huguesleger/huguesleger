@@ -1,0 +1,84 @@
+.btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  &.btn-xl {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    &.btn-effect::before {
+      padding-bottom: 56px;
+    }
+  }
+  &.btn-dark {
+    border: 1px solid $dark_grey;
+    background-color: $dark_grey;
+  }
+}
+.btn-effect {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  span {
+    display: block;
+    position: relative;
+    i {
+      margin-right: 0.5rem;
+    }
+  }
+  & > span {
+    overflow: hidden;
+  }
+  &:hover > span > span {
+    animation: MoveUpInitial 0.2s forwards, MoveUpEnd 0.2s forwards 0.2s;
+    color: $dark_grey;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2px;
+    background: #fff;
+    width: 102%;
+    height: 0;
+    padding-bottom: 32px;
+    border-radius: 1rem;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+  }
+  &:hover::before {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.btn-progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: none;
+  padding: 0;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  width: 55px;
+  height: 55px;
+  font-size: 0.85rem;
+  .progress {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+    .progress-path {
+      fill: none;
+      stroke: #fff;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      transition: stroke-dashoffset 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+      stroke-width: 1px;
+    }
+  }
+  &:hover .progress-path {
+    stroke-dashoffset: 0;
+  }
+}
