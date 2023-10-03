@@ -1,4 +1,5 @@
 "use client";
+import Sphere from "@/components/three/home/Sphere";
 import React, { useEffect } from "react";
 import { useAppContext } from "./context/AppContext";
 
@@ -11,7 +12,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>hello</h1>
+      <Sphere />
     </div>
   );
 };
