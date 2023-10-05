@@ -3,7 +3,7 @@ import React, { ReactNode, useRef } from "react";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import { useAppContext } from "@/app/context/AppContext";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 type ScrollType = {
   children: ReactNode;
@@ -13,6 +13,7 @@ const ScrollLoco = ({ children }: ScrollType): JSX.Element => {
   const asPath = useRouter();
   const containerRef = useRef(null);
   const { pageName } = useAppContext();
+  const pathname = usePathname();
 
   return (
     <LocomotiveScrollProvider
@@ -34,7 +35,11 @@ const ScrollLoco = ({ children }: ScrollType): JSX.Element => {
       }}
       containerRef={containerRef}
     >
-      <main data-scroll-container ref={containerRef} className={pageName}>
+      <main
+        data-scroll-container
+        ref={containerRef}
+        className={pathname?.match("/") ? "page-home" : pageName}
+      >
         {children}
       </main>
     </LocomotiveScrollProvider>

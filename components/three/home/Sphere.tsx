@@ -1,3 +1,5 @@
+"use client";
+
 import { Canvas } from "@react-three/fiber";
 import React, { Suspense } from "react";
 import DisformSphere from "./DisformSphere";
