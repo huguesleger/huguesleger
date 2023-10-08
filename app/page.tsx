@@ -10,14 +10,14 @@ export default async function Home() {
   } = await request({ query: Query.QUERY_HOME });
 
   return (
-    <div>
+    <>
       <HomePage
         title={home.titre}
-        image={home.image}
+        // image={home.image}
         titleEnter={home.titreEntrer}
         textEnter={home.texteEntrer}
       />
       <Sphere />
-    </div>
+    </>
   );
 }
