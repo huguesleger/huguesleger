@@ -17,7 +17,6 @@ export default async function Home() {
         titleEnter={home.titreEntrer}
         textEnter={home.texteEntrer}
       />
-      <Sphere />
     </>
   );
 }
