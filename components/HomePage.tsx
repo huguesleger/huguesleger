@@ -61,7 +61,7 @@ const Intro = ({
                   priority
                 />
               </div>
-              <Link href="#" className="inner-enter" data-cursor>
+              <Link href="/realisations" className="inner-enter" data-cursor>
                 <span className="title-enter">{formatTxt(titleEnter)}</span>
                 <span className="txt-enter">{formatTxt(textEnter)}</span>
               </Link>

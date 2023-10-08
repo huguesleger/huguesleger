@@ -15,10 +15,10 @@ const DisformSphere = () => {
   const uniforms = useRef({
     uTime: { value: 0 },
     uFrequency: { value: 2.0 },
-    uPrimaryColor: { value: new THREE.Color("#383838") },
-    uSecondaryColor: { value: new THREE.Color("#686968") },
-    // uPrimaryColor: { value: new THREE.Color("#BEBBBB") },
-    // uSecondaryColor: { value: new THREE.Color("#383838") },
+    // uPrimaryColor: { value: new THREE.Color("#383838") },
+    // uSecondaryColor: { value: new THREE.Color("#686968") },
+    uPrimaryColor: { value: new THREE.Color("#BEBBBB") },
+    uSecondaryColor: { value: new THREE.Color("#383838") },
   });
 
   useFrame((state, delta) => {

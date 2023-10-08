@@ -9,7 +9,7 @@ const Sphere = () => {
     <div className="container-canvas">
       <Canvas>
         <Suspense fallback={null}>
-          <color attach="background" args={["#171717"]} />
+          <color attach="background" args={["#ffffff"]} />
           <DisformSphere />
           <ambientLight />
         </Suspense>
