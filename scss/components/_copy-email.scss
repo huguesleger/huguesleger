@@ -1,0 +1,28 @@
+.wrap-copy {
+  cursor: pointer;
+  .inner-label {
+    overflow: hidden;
+    height: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .copy-label,
+  .copied-label {
+    font-size: 0.688rem;
+    color: $light_grey;
+    display: block;
+    transition-duration: 250ms;
+    transform: translateY(0) rotate(0.01deg);
+  }
+  .copy-email {
+    font-size: 0.813rem;
+  }
+  &.copied {
+    .copy-label,
+    .copied-label {
+      transform: translateY(-100%) rotate(0.01deg);
+    }
+    .copied-label {
+      transition-delay: 100ms;
+    }
+  }
+}

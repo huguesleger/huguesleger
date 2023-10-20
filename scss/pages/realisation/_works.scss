@@ -1,0 +1,87 @@
+.works {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  .container-canvas {
+    z-index: 1;
+  }
+  .wrap-infos {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    height: 145px;
+    display: flex;
+    align-items: center;
+    // min-height: 100vh;
+    z-index: 2;
+    // pointer-events: none;
+    .info-work {
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      //   pointer-events: none !important;
+      position: absolute;
+      text-transform: uppercase;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      width: 100%;
+      text-align: center;
+      &.active {
+        opacity: 1;
+      }
+      .work-link {
+        font-size: 4rem;
+        font-family: $font_gallient;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        line-height: 1;
+      }
+    }
+  }
+  .wrap-number {
+    top: 120px;
+    right: 75px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    transform: rotate(90deg);
+    overflow: hidden;
+    position: absolute;
+    .number-work {
+      display: flex;
+      align-items: center;
+      position: relative;
+      .number {
+        font-size: 3rem;
+        width: 61px;
+        display: inline-block;
+        text-align: right;
+      }
+      .separate {
+        padding: 0 6px;
+      }
+    }
+  }
+  .wrap-progress {
+    position: absolute;
+    bottom: 45px;
+    right: 80px;
+    z-index: 1;
+    width: 90px;
+    height: 90px;
+  }
+  .wrap-contact {
+    position: absolute;
+    z-index: 1;
+    bottom: 40px;
+    left: 65px;
+  }
+}
