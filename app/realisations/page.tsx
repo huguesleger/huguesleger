@@ -20,7 +20,7 @@ export default async function Realisations() {
       <WorksInfos props={projets} />
       <WorksNumber props={projets} />
       <WorksProgress />
-      <WorksContact />
+      {typeof window !== "undefined" && <WorksContact />}
     </div>
   );
 }
