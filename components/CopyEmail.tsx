@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const CopyEmail = () => {
   const refCopy = useRef<any>(null);
@@ -9,7 +9,9 @@ const CopyEmail = () => {
   const handleClick = (e: any) => {
     if (!refCopy) return;
     const copy = refCopy.current.innerHTML;
-    navigator.clipboard.writeText(copy);
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(copy);
+    }
     if (!refWrap) return;
     refWrap.current.classList.add("copied");
   };
