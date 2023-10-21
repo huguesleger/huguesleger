@@ -1,11 +1,21 @@
 import { request } from "@/lib/datocms/datocms";
 import Query from "@/lib/datocms/queries";
 import React from "react";
-import Works from "../../components/three/works/Works";
 import WorksInfos from "@/components/realisations/WorksInfos";
 import WorksNumber from "@/components/realisations/WorksNumber";
 import WorksProgress from "@/components/realisations/WorksProgress";
-import WorksContact from "@/components/realisations/WorksContact";
+import dynamic from "next/dynamic";
+
+const AllWork = dynamic(() => import("../../components/three/works/Works"), {
+  ssr: false,
+});
+
+const Contact = dynamic(
+  () => import("../../components/realisations/WorksContact"),
+  {
+    ssr: false,
+  }
+);
 
 async function getWorks() {
   return await request({ query: Query.QUERY_CARD_PROJETS });
@@ -16,11 +26,13 @@ export default async function Realisations() {
 
   return (
     <div className="works">
-      <Works props={projets} />
+      {/* @ts-ignore  */}
+      <AllWork props={projets} />
       <WorksInfos props={projets} />
       <WorksNumber props={projets} />
       <WorksProgress />
-      <WorksContact />
+      {/* @ts-ignore  */}
+      <Contact />
     </div>
   );
 }
