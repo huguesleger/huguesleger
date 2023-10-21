@@ -1,12 +1,17 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import React from "react";
-import CopyEmail from "../CopyEmail";
+
+const Copy = dynamic(() => import("../CopyEmail"), {
+  ssr: false,
+});
 
 const WorksContact = () => {
   return (
     <div className="wrap-contact">
-      <CopyEmail />
+      {/* @ts-expect-error Server Component */}
+      <Copy />
     </div>
   );
 };

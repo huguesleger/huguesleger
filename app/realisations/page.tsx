@@ -11,15 +11,15 @@ async function getWorks() {
   return await request({ query: Query.QUERY_CARD_PROJETS });
 }
 
+const EmailContact = dynamic(
+  () => import("../../components/realisations/WorksContact"),
+  {
+    ssr: false,
+  }
+);
+
 export default async function Realisations() {
   const projets = await getWorks();
-
-  const EMailContact = dynamic(
-    () => import("../../components/realisations/WorksContact"),
-    {
-      ssr: false,
-    }
-  );
 
   return (
     <div className="works">
@@ -28,7 +28,7 @@ export default async function Realisations() {
       <WorksNumber props={projets} />
       <WorksProgress />
       {/* @ts-expect-error Server Component */}
-      <EMailContact />
+      <EmailContact />
     </div>
   );
 }
