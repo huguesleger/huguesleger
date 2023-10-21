@@ -1,15 +1,24 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 
 const CopyEmail = () => {
   const refCopy = useRef<any>(null);
   const refWrap = useRef<any>(null);
 
+  const [isNativeShare, setNativeShare] = useState(false);
+
+  useEffect(() => {
+    if (navigator.clipboard) {
+      setNativeShare(true);
+    }
+  }, []);
+
   const handleClick = (e: any) => {
     if (!refCopy) return;
     const copy = refCopy.current.innerHTML;
-    if (typeof window !== "undefined") {
+    if (isNativeShare === true) {
       navigator.clipboard.writeText(copy);
     }
     if (!refWrap) return;
