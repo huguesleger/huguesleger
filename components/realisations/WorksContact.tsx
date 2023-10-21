@@ -6,7 +6,7 @@ import CopyEmail from "../CopyEmail";
 const WorksContact = () => {
   return (
     <div className="wrap-contact">
-      <CopyEmail />
+      {typeof window !== "undefined" && <CopyEmail />}
     </div>
   );
 };
