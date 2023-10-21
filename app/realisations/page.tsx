@@ -1,12 +1,7 @@
 import { request } from "@/lib/datocms/datocms";
 import Query from "@/lib/datocms/queries";
 import React from "react";
-// import WorksPage from "@/components/realisations/WorksPage";
-import dynamic from "next/dynamic";
-
-const AllWork = dynamic(() => import("@/components/realisations/WorksPage"), {
-  ssr: false,
-});
+import WorksPage from "@/components/realisations/WorksPage";
 
 export default async function Realisations() {
   const {
@@ -15,8 +10,7 @@ export default async function Realisations() {
 
   return (
     <>
-      {/* @ts-ignore  */}
-      <AllWork data={allProjets} />
+      <WorksPage data={allProjets} />
     </>
   );
 }
