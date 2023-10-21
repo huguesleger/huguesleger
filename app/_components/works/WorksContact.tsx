@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import CopyEmail from "../../../components/CopyEmail";
+import CopyEmail from "../CopyEmail";
 
 const WorksContact = () => {
   return (
