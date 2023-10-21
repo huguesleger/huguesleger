@@ -6,16 +6,13 @@ import WorksNumber from "@/components/realisations/WorksNumber";
 import WorksProgress from "@/components/realisations/WorksProgress";
 import dynamic from "next/dynamic";
 
-const AllWork = dynamic(() => import("../../components/three/works/Works"), {
+const AllWork = dynamic(() => import("../components/works/Works"), {
   ssr: false,
 });
 
-const Contact = dynamic(
-  () => import("../../components/realisations/WorksContact"),
-  {
-    ssr: false,
-  }
-);
+const Contact = dynamic(() => import("../components/works/WorksContact"), {
+  ssr: false,
+});
 
 async function getWorks() {
   return await request({ query: Query.QUERY_CARD_PROJETS });
