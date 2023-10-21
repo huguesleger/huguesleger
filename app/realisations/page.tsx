@@ -11,15 +11,15 @@ async function getWorks() {
   return await request({ query: Query.QUERY_CARD_PROJETS });
 }
 
-const EMailContact = dynamic(
-  () => import("../../components/realisations/WorksContact"),
-  {
-    ssr: false,
-  }
-);
-
 export default async function Realisations() {
   const projets = await getWorks();
+
+  const EMailContact = dynamic(
+    () => import("../../components/realisations/WorksContact"),
+    {
+      ssr: false,
+    }
+  );
 
   return (
     <div className="works">
