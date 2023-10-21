@@ -39,7 +39,7 @@ const Carousel = ({ projets }: any) => {
   const [scrollIn, setScrollIn] = useState(false);
   const { viewport } = useThree();
 
-  const works = projets.data.allProjets;
+  const works = projets;
 
   /*--------------------
   Vars

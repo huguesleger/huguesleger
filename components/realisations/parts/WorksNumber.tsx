@@ -1,7 +1,7 @@
 import React from "react";
 
 const WorksNumber = ({ props }: any) => {
-  const totalProject = props.data.allProjets.length;
+  const totalProject = props.length;
   return (
     <div className="wrap-number">
       <div className="number-work">

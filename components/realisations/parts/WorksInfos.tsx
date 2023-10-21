@@ -1,7 +1,7 @@
 import React from "react";
 
 const WorksInfos = ({ props }: any) => {
-  const worksInfos = props.data.allProjets;
+  const worksInfos = props;
   return (
     <div className="wrap-infos">
       {worksInfos.map((el: any, i: any) => {
