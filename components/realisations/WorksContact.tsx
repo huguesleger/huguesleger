@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import CopyEmail from "../CopyEmail";
 
 const WorksContact = () => {
   return (
     <div className="wrap-contact">
-      <CopyEmail />
+      <Suspense fallback={null}>
+        <CopyEmail />
+      </Suspense>
     </div>
   );
 };

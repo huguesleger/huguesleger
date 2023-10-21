@@ -1,6 +1,6 @@
 import { request } from "@/lib/datocms/datocms";
 import Query from "@/lib/datocms/queries";
-import React, { Suspense } from "react";
+import React from "react";
 import Works from "../../components/three/works/Works";
 import WorksInfos from "@/components/realisations/WorksInfos";
 import WorksNumber from "@/components/realisations/WorksNumber";
@@ -20,9 +20,7 @@ export default async function Realisations() {
       <WorksInfos props={projets} />
       <WorksNumber props={projets} />
       <WorksProgress />
-      <Suspense fallback={null}>
-        <WorksContact />
-      </Suspense>
+      <WorksContact />
     </div>
   );
 }
