@@ -1,6 +1,6 @@
 import React from "react";
 // import Works from "../three/works/Works";
-import WorksContact from "./parts/WorksContact";
+// import WorksContact from "./parts/WorksContact";
 import WorksInfos from "./parts/WorksInfos";
 import WorksNumber from "./parts/WorksNumber";
 import WorksProgress from "./parts/WorksProgress";
@@ -12,7 +12,7 @@ export default function WorksPage({ data }: any) {
       <WorksInfos props={data} />
       <WorksNumber props={data} />
       <WorksProgress />
-      <WorksContact />
+      {/* <WorksContact /> */}
     </div>
   );
 }
