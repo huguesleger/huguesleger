@@ -6,11 +6,11 @@ import WorksNumber from "@/components/realisations/WorksNumber";
 import WorksProgress from "@/components/realisations/WorksProgress";
 import dynamic from "next/dynamic";
 
-const AllWork = dynamic(() => import("../components/works/Works"), {
+const AllWork = dynamic(() => import("../_components/works/Works"), {
   ssr: false,
 });
 
-const Contact = dynamic(() => import("../components/works/WorksContact"), {
+const Contact = dynamic(() => import("../_components/works/WorksContact"), {
   ssr: false,
 });
 
