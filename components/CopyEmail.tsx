@@ -15,11 +15,11 @@ const CopyEmail = () => {
     }
   }, []);
 
-  const handleClick = (e: any) => {
+  const handleClick = async (e: any) => {
     if (!refCopy) return;
     const copy = refCopy.current.innerHTML;
     if (isNativeShare === true) {
-      navigator.clipboard.writeText(copy);
+      await navigator.clipboard.writeText(copy);
     }
     if (!refWrap) return;
     refWrap.current.classList.add("copied");
