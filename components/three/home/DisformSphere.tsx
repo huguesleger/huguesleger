@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import vertex from "./vertex";
 import fragment from "./fragment";
 import * as THREE from "three";
@@ -21,6 +21,13 @@ const DisformSphere = () => {
     uSecondaryColor: { value: new THREE.Color("#383838") },
   });
 
+  useEffect(() => {
+    const btnEnter = document.querySelector(".wrap-enter .inner-enter");
+    if (!btnEnter) return;
+    btnEnter.addEventListener("mouseenter", onMouseEnter);
+    btnEnter.addEventListener("mouseleave", onMouseOut);
+  }, []);
+
   useFrame((state, delta) => {
     if (!shaderRef.current) return;
     shaderRef.current.uniforms.uTime.value += delta * 0.3;
@@ -28,7 +35,6 @@ const DisformSphere = () => {
   });
 
   const onMouseEnter = () => {
-    console.log(ref.current);
     if (!shaderRef.current) return;
     const tl = gsap.timeline();
     tl.to(shaderRef.current.uniforms.uFrequency, {
@@ -46,7 +52,6 @@ const DisformSphere = () => {
   };
 
   const onMouseOut = () => {
-    console.log("out");
     if (!shaderRef.current) return;
     const tl = gsap.timeline();
     tl.to(shaderRef.current.uniforms.uFrequency, {
@@ -67,8 +72,8 @@ const DisformSphere = () => {
     <mesh
       position={[2.8, 0, 0]}
       ref={ref}
-      onPointerEnter={onMouseEnter}
-      onPointerOut={onMouseOut}
+      // onPointerEnter={onMouseEnter}
+      // onPointerOut={onMouseOut}
     >
       <sphereGeometry args={[3.5, 1024, 512]} />
       <shaderMaterial
