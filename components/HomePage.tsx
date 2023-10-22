@@ -33,14 +33,13 @@ const Intro = ({
 
   return (
     <div className="wrapper" data-scroll-section>
-      <div className="wrapper-homepage">
-        <div className="home container">
-          <div className="wrap-title">
-            <div className="inner-title">
-              <h1 className="title">{formatTxt(title)}</h1>
-            </div>
+      <div className="home container">
+        <div className="wrap-title">
+          <div className="inner-title">
+            <h1 className="title">{formatTxt(title)}</h1>
           </div>
-          {/* <div className="inner-img">
+        </div>
+        {/* <div className="inner-img">
           <Image
             className="img-intro"
             src={image.url}
@@ -50,34 +49,33 @@ const Intro = ({
             alt="toto"
           />
         </div> */}
-          <div className="block-bottom">
-            <div className="wrap-enter">
-              <div className="inner-arrow">
-                <Image
-                  src="/images/arrow-enter.svg"
-                  width={90}
-                  height={90}
-                  alt="entrez"
-                  priority
-                />
-              </div>
-              <Link href="/realisations" className="inner-enter" data-cursor>
-                <span className="title-enter">{formatTxt(titleEnter)}</span>
-                <span className="txt-enter">{formatTxt(textEnter)}</span>
-              </Link>
-            </div>
-            <div className="city">
+        <div className="block-bottom">
+          <div className="wrap-enter">
+            <div className="inner-arrow">
               <Image
-                src="/images/mtp.svg"
-                width={120}
-                height={120}
-                alt="montpellier"
+                src="/images/arrow-enter.svg"
+                width={90}
+                height={90}
+                alt="entrez"
+                priority
               />
             </div>
+            <Link href="/realisations" className="inner-enter" data-cursor>
+              <span className="title-enter">{formatTxt(titleEnter)}</span>
+              <span className="txt-enter">{formatTxt(textEnter)}</span>
+            </Link>
+          </div>
+          <div className="city">
+            <Image
+              src="/images/mtp.svg"
+              width={120}
+              height={120}
+              alt="montpellier"
+            />
           </div>
         </div>
-        <Sphere />
       </div>
+      <Sphere />
     </div>
   );
 };

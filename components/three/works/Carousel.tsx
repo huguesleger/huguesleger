@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef, useState, useMemo } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { Events, useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import CarouselItem from "./CarouselItem";
 import { lerp } from "../../utils";
 import { Group } from "three";
+import { useEffect } from "react";
 
 /*------------------------------
 Plane Settings
@@ -44,7 +45,7 @@ const Carousel = ({ projets }: any) => {
   /*--------------------
   Vars
   --------------------*/
-  const refItems = useRef<Group>(null);
+  const refItems = useRef<any>(null);
   const $items = useMemo(() => {
     if ($root) return $root.parent?.children;
   }, [$root]);
@@ -137,6 +138,40 @@ const Carousel = ({ projets }: any) => {
     progressRound.style.rotate =
       currentProgress + currentScroll / progress + "deg";
   };
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    if (!refItems.current) return;
+    tl.fromTo(
+      refItems.current.children[0].position,
+      {
+        y: -10,
+        duration: 1,
+        ease: "Power2.easeInOut",
+      },
+      {
+        y: 0,
+        duration: 1,
+        ease: "Power2.easeInOut",
+        onStart: () => {
+          gsap.fromTo(
+            refItems.current.children[0].children[0].children[0].material
+              .uniforms.uProgress,
+            {
+              value: 0.5,
+              duration: 1.5,
+              ease: "Power2.easeInOut",
+            },
+            {
+              value: 0,
+              duration: 1.5,
+              ease: "Power2.easeInOut",
+            }
+          );
+        },
+      }
+    );
+  }, []);
 
   /*--------------------
   Render Plane Events
