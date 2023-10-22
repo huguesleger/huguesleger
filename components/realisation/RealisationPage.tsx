@@ -4,9 +4,9 @@ import Header from "./parts/Header";
 export default function RealisationPage({ data }: any) {
   return (
     <>
-      <div>
+      {/* <div>
         <h1>{data.titre}</h1>
-      </div>
+      </div> */}
       <Header image={data.imageSlider} />
     </>
   );

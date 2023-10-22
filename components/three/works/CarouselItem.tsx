@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import PlaneItem from "./PlaneItem";
+import { usePathname, useRouter } from "next/navigation";
 
 const CarouselItem = ({
   index,
@@ -19,6 +20,8 @@ const CarouselItem = ({
   const [isCloseActive, setCloseActive] = useState(false);
   const { viewport } = useThree();
   const timeoutID = useRef<any>();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (activePlane === index) {
@@ -48,6 +51,10 @@ const CarouselItem = ({
       ease: "power3.out",
       delay: isActive ? 0 : 2,
     });
+    gsap.to($root.current.scale, {
+      x: isActive ? 0.8 : 1,
+      y: isActive ? 0.8 : 1,
+    });
   }, [isActive]);
 
   /*------------------------------
@@ -62,10 +69,32 @@ const CarouselItem = ({
       duration: 0.5,
       ease: "power3.out",
     });
+
+    const cursor = document.querySelector(".cursor");
+    const label = document.querySelector(".cursor-label-canvas");
+
+    if (hover === true) {
+      cursor?.classList.add("has-canvas");
+      label?.classList.remove("label-hidden");
+    } else {
+      cursor?.classList.remove("has-canvas");
+      label?.classList.add("label-hidden");
+    }
   }, [hover, isActive]);
 
   const handleClick = () => {
     setActivePlane(index);
+    const path = pathname + "/" + item.slug;
+    const wrapperEl = document.querySelector(".wrap-works");
+    const tl = gsap.timeline();
+    tl.to(wrapperEl, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+    setTimeout(function () {
+      router.push(path);
+    }, 1650);
   };
 
   const handleClose = (e: any) => {
@@ -94,6 +123,7 @@ const CarouselItem = ({
         height={height}
         texture={item.imageSlider.url}
         active={isActive}
+        name={item.slug}
       />
 
       {isCloseActive ? (

@@ -101,7 +101,7 @@ const Cursor = () => {
         <div className="cursor-circle" id="cursor-circle" ref={cursorCircle}>
           <div className="cursor-label" ref={label}></div>
           <div className="cursor-label-canvas label-hidden" ref={labelCanvas}>
-            Voir le projet
+            Voir le détail
           </div>
           <div className="cursor-drag">
             <div className="arrow-left"></div>

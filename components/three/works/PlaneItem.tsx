@@ -30,6 +30,11 @@ const Plane = ({ texture, width, height, active, ...props }: any) => {
         duration: 2.5,
         ease: "power3.out,",
       });
+      gsap.to($mesh.current.material.uniforms.uDistor, {
+        value: active ? 0 : 0.25,
+        duration: 2.5,
+        ease: "power3.out,",
+      });
     }
   }, [viewport, active]);
 
