@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { getMousePos } from "../utils/utils";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Cursor = () => {
   const cursorCircle = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ const Cursor = () => {
   let mouseIsHover = false;
   let mousepos = { x: 0, y: 0 };
 
-  const router = useRouter();
+  const router = usePathname();
 
   const mouseMove = (ev: any) => {
     mousepos = getMousePos(ev);
