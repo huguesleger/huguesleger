@@ -27,7 +27,7 @@ const Loader = () => {
         },
       });
     }
-  }, [refLoader.current]);
+  }, [pathname]);
 
   return (
     <>

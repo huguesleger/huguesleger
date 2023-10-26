@@ -1,18 +1,26 @@
 "use client";
 
+import { useAppContext } from "@/app/context/AppContext";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import WorksContact from "./parts/WorksContact";
 import WorksInfos from "./parts/WorksInfos";
 import WorksNumber from "./parts/WorksNumber";
 import WorksProgress from "./parts/WorksProgress";
 
-const AllWork = dynamic(() => import("../three/works/Works"), {
+const Works = dynamic(() => import("../three/works/Works"), {
   ssr: false,
 });
 
 export default function WorksPage({ data }: any) {
+  const { setPageName } = useAppContext();
+
+  useEffect(() => {
+    setPageName("page-realisations");
+    return () => {};
+  }, []);
+
   return (
     <div className="works">
       <div className="works-img">
@@ -32,7 +40,7 @@ export default function WorksPage({ data }: any) {
         </div>
       </div>
       {/* @ts-ignore  */}
-      <AllWork props={data} />
+      <Works props={data} />
       <div className="wrap-works">
         <WorksInfos props={data} />
         <WorksNumber props={data} />
