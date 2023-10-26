@@ -17,14 +17,9 @@ const Loader = () => {
       tl.to(refLoader.current, {
         delay: 7,
         opacity: 0,
+        visibility: "hidden",
         ease: "Power2.easeInOut",
         duration: 0.5,
-        onComplete: () => {
-          gsap.to(refLoader.current, {
-            display: "none",
-            delay: 0.3,
-          });
-        },
       });
     }
   }, [pathname]);
