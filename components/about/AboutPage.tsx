@@ -4,6 +4,7 @@ import { useAppContext } from "@/app/context/AppContext";
 import React, { useEffect } from "react";
 import Bio from "./parts/Bio";
 import CircleText from "./parts/CircleText";
+import Competences from "./parts/competences/Competences";
 import Cursus from "./parts/Cursus";
 import Header from "./parts/Header";
 
@@ -20,6 +21,7 @@ const AboutPage = ({ data }: any) => {
       <Bio props={data} />
       <CircleText props={data} />
       <Cursus props={data} />
+      <Competences props={data} />
     </div>
   );
 };
