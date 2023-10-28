@@ -14,6 +14,8 @@ const Works = dynamic(() => import("../three/works/Works"), {
 });
 
 export default function WorksPage({ data }: any) {
+  const dataProject = data[0];
+  const dataHome = data[1];
   const { setPageName } = useAppContext();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function WorksPage({ data }: any) {
     <div className="works">
       <div className="works-img">
         <div className="inner-img">
-          {data.map((el: any, i: any) => {
+          {dataProject.map((el: any, i: any) => {
             return (
               <div className="thumbnail" key={i}>
                 <Image
@@ -40,12 +42,12 @@ export default function WorksPage({ data }: any) {
         </div>
       </div>
       {/* @ts-ignore  */}
-      <Works props={data} />
+      <Works props={dataProject} />
       <div className="wrap-works">
-        <WorksInfos props={data} />
-        <WorksNumber props={data} />
+        <WorksInfos props={dataProject} />
+        <WorksNumber props={dataProject} />
         <WorksProgress />
-        <WorksContact />
+        <WorksContact props={dataHome} />
       </div>
     </div>
   );

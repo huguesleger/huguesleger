@@ -7,10 +7,13 @@ export default async function Realisations() {
   const {
     data: { allProjets },
   } = await request({ query: Query.QUERY_CARD_PROJETS });
+  const {
+    data: { home },
+  } = await request({ query: Query.QUERY_HOME });
 
   return (
     <>
-      <WorksPage data={allProjets} />
+      <WorksPage data={[allProjets, home]} />
     </>
   );
 }

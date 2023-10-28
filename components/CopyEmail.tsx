@@ -2,7 +2,11 @@
 
 import React, { useRef } from "react";
 
-const CopyEmail = () => {
+type CopyEmailType = {
+  children: React.ReactNode;
+};
+
+const CopyEmail = ({ children }: CopyEmailType) => {
   const refCopy = useRef<any>(null);
   const refWrap = useRef<any>(null);
 
@@ -31,7 +35,7 @@ const CopyEmail = () => {
         <span className="copied-label">Copied</span>
       </div>
       <p className="copy-email" ref={refCopy}>
-        contactme@hl-developerz.com
+        {children}
       </p>
     </div>
   );
