@@ -1,0 +1,18 @@
+.social {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  &.social-home {
+    right: 3rem;
+    .btn-progress {
+      .progress {
+        .progress-path {
+          stroke: $dark_grey;
+        }
+      }
+    }
+  }
+  &.social-work {
+    left: 3rem;
+  }
+}

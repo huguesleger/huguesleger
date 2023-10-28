@@ -5,6 +5,7 @@ import formatTxt from "@/lib/functions/formatTxt";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import Social from "./Social";
 import Sphere from "./three/home/Sphere";
 
 type IntroType = {
@@ -76,6 +77,7 @@ const Intro = ({
         </div>
       </div>
       <Sphere />
+      <Social classe={"social-home"} />
     </div>
   );
 };
