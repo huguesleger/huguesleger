@@ -1,5 +1,7 @@
 import InfiniteKeywords from "@/components/InfiniteKeywords";
 import React from "react";
+import CompetencesItems from "./CompetencesItems";
+import CompetencesItemsList from "./CompetencesItemsList";
 
 const Competences = ({ props }: any) => {
   const skills = props;
@@ -20,6 +22,18 @@ const Competences = ({ props }: any) => {
             );
           })}
         </span>
+      </div>
+      <div className="wrapper">
+        <div className="container">
+          <div className="wrap-items">
+            {skills.listeCompetence.map((el: any) => {
+              return <CompetencesItems key={el.id} props={el} />;
+            })}
+            {skills.listeCompetenceItems.map((el: any) => {
+              return <CompetencesItemsList key={el.id} props={el} />;
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
