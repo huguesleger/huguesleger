@@ -65,6 +65,7 @@ export namespace GraphQLResponse {
     titreKeyword: string;
     description: StructuredText<any>;
     codeCouleur: CodeColor[];
+    imageCodeCouleur: Image;
     texteSlider: StructuredText<any>;
     imageGraphique: Image;
     imageCard: ImageCard[];

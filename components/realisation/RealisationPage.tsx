@@ -4,6 +4,7 @@ import { useAppContext } from "@/app/context/AppContext";
 import React, { useEffect } from "react";
 import Description from "./parts/Description";
 import Header from "./parts/Header";
+import IdentityColor from "./parts/IdentityColor";
 import IdentityGraphique from "./parts/IdentityGraphique";
 import ImgDesign from "./parts/ImgDesign";
 import Infos from "./parts/Infos";
@@ -22,6 +23,7 @@ export default function RealisationPage({ data }: any) {
       <Description props={data} />
       <ImgDesign props={data} />
       <IdentityGraphique props={data} />
+      <IdentityColor props={data} />
     </>
   );
 }

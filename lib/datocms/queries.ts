@@ -103,6 +103,13 @@ query MyQuery ($slug: String){
         hex
       }
     }
+    imageCodeCouleur {
+      id
+      alt
+      height
+      url
+      width
+    }
     imageCharte {
       id
       _modelApiKey
