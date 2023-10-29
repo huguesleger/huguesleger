@@ -1,24 +1,16 @@
 import Image from "next/image";
 import React from "react";
 
-type HeaderType = {
-  image: {
-    alt: string;
-    url: string;
-    width: number;
-    height: number;
-  };
-};
-
-const Header = ({ image }: HeaderType): JSX.Element => {
+const Header = ({ props }: any) => {
+  const reaHeader = props;
   return (
     <div className="header-project" data-scroll-section>
       <div className="inner-img">
         <Image
-          src={image.url}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
+          src={reaHeader.imageSlider.url}
+          alt={reaHeader.imageSlider.alt}
+          width={reaHeader.imageSlider.width}
+          height={reaHeader.imageSlider.height}
           className="img-cover"
           priority
         />
