@@ -62,6 +62,7 @@ export namespace GraphQLResponse {
     colorSectionMobile: Color;
     imageTemplateMobile: Image;
     imageDevice: Image;
+    titreKeyword: string;
     description: StructuredText<any>;
     codeCouleur: CodeColor[];
     texteSlider: StructuredText<any>;

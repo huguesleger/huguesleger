@@ -2,6 +2,7 @@
 
 import { useAppContext } from "@/app/context/AppContext";
 import React, { useEffect } from "react";
+import Description from "./parts/Description";
 import Header from "./parts/Header";
 import Infos from "./parts/Infos";
 
@@ -16,6 +17,7 @@ export default function RealisationPage({ data }: any) {
     <>
       <Header props={data} />
       <Infos props={data} />
+      <Description props={data} />
     </>
   );
 }

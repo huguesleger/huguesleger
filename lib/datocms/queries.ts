@@ -183,6 +183,7 @@ query MyQuery ($slug: String){
     }
     intervention
     siteWeb
+    titreKeyword
     description {
       value
     }
