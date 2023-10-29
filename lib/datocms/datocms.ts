@@ -5,7 +5,7 @@ export const request = async ({
 }: any) => {
   const response = await fetch("https://graphql.datocms.com/", {
     headers: {
-      Authorization: `Bearer 07ee3e923a6df7b28f9a4976e9a290`,
+      Authorization: `Bearer ${process.env.DATO_API_TOKEN}`,
       ...(includeDrafts ? { "X-Include-Drafts": "true" } : {}),
     },
     method: "POST",
