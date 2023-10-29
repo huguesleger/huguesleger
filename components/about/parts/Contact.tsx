@@ -1,6 +1,5 @@
 import CopyEmail from "@/components/CopyEmail";
 import Footer from "@/components/layout/Footer";
-import Link from "next/link";
 import React from "react";
 
 const Contact = ({ props }: any) => {
