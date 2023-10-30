@@ -10,6 +10,7 @@ import IdentityColor from "./parts/IdentityColor";
 import IdentityGraphique from "./parts/IdentityGraphique";
 import ImgDesign from "./parts/ImgDesign";
 import Infos from "./parts/Infos";
+import Text from "./parts/Text";
 
 export default function RealisationPage({ data }: any) {
   const { setPageName } = useAppContext();
@@ -28,6 +29,7 @@ export default function RealisationPage({ data }: any) {
       <IdentityColor props={data} />
       <DeviceMobile props={data} />
       <DeviceDesktop props={data} />
+      <Text props={data} />
     </>
   );
 }
