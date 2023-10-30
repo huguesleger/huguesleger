@@ -14,6 +14,7 @@ import Infos from "./parts/Infos";
 import TemplateDesktop from "./parts/TemplateDesktop";
 import TemplateDesktopFull from "./parts/TemplateDesktopFull";
 import Text from "./parts/Text";
+import VisuOutside from "./parts/VisuOutside";
 
 export default function RealisationPage({ data }: any) {
   const { setPageName } = useAppContext();
@@ -36,6 +37,7 @@ export default function RealisationPage({ data }: any) {
       <TemplateDesktopFull props={data} />
       <TemplateDesktop props={data} />
       <Cards props={data} />
+      <VisuOutside props={data} />
     </>
   );
 }

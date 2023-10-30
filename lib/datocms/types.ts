@@ -70,6 +70,7 @@ export namespace GraphQLResponse {
     imageGraphique: Image;
     imageCard: ImageCard[];
     texteImageCard: StructuredText<any>;
+    pubOutside: Image;
   }
 
   export interface Home {

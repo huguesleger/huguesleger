@@ -221,6 +221,13 @@ query MyQuery ($slug: String){
     texteImageCard {
       value
     }
+    pubOutside {
+      alt
+      height
+      id
+      url
+      width
+    }
   }
 }
 `;
