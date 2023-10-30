@@ -2,6 +2,7 @@
 
 import { useAppContext } from "@/app/context/AppContext";
 import React, { useEffect } from "react";
+import Cards from "./parts/Cards";
 import Description from "./parts/Description";
 import DeviceDesktop from "./parts/DeviceDesktop";
 import DeviceMobile from "./parts/DeviceMobile";
@@ -34,6 +35,7 @@ export default function RealisationPage({ data }: any) {
       <Text props={data} />
       <TemplateDesktopFull props={data} />
       <TemplateDesktop props={data} />
+      <Cards props={data} />
     </>
   );
 }
