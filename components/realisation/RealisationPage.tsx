@@ -10,6 +10,7 @@ import IdentityColor from "./parts/IdentityColor";
 import IdentityGraphique from "./parts/IdentityGraphique";
 import ImgDesign from "./parts/ImgDesign";
 import Infos from "./parts/Infos";
+import TemplateDesktop from "./parts/TemplateDesktop";
 import TemplateDesktopFull from "./parts/TemplateDesktopFull";
 import Text from "./parts/Text";
 
@@ -32,6 +33,7 @@ export default function RealisationPage({ data }: any) {
       <DeviceDesktop props={data} />
       <Text props={data} />
       <TemplateDesktopFull props={data} />
+      <TemplateDesktop props={data} />
     </>
   );
 }
