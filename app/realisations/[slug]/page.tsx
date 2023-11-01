@@ -23,10 +23,13 @@ export default async function Page({ params }: any) {
   const {
     data: { projet },
   } = await request(pageRequest);
+  const {
+    data: { allProjets },
+  } = await request({ query: Query.QUERY_CARD_PROJETS });
 
   if (!projet) {
     notFound();
   }
 
-  return <RealisationPage data={projet} />;
+  return <RealisationPage data={[projet, allProjets]} />;
 }

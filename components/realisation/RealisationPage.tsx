@@ -11,12 +11,16 @@ import IdentityColor from "./parts/IdentityColor";
 import IdentityGraphique from "./parts/IdentityGraphique";
 import ImgDesign from "./parts/ImgDesign";
 import Infos from "./parts/Infos";
+import NavigationNext from "./parts/NavigationNext";
 import TemplateDesktop from "./parts/TemplateDesktop";
 import TemplateDesktopFull from "./parts/TemplateDesktopFull";
 import Text from "./parts/Text";
 import VisuOutside from "./parts/VisuOutside";
 
 export default function RealisationPage({ data }: any) {
+  const dataProject = data[0];
+  const dataAllProject = data[1];
+
   const { setPageName } = useAppContext();
 
   useEffect(() => {
@@ -25,19 +29,22 @@ export default function RealisationPage({ data }: any) {
 
   return (
     <>
-      <Header props={data} />
-      <Infos props={data} />
-      <Description props={data} />
-      <ImgDesign props={data} />
-      <IdentityGraphique props={data} />
-      <IdentityColor props={data} />
-      <DeviceMobile props={data} />
-      <DeviceDesktop props={data} />
-      <Text props={data} />
-      <TemplateDesktopFull props={data} />
-      <TemplateDesktop props={data} />
-      <Cards props={data} />
-      <VisuOutside props={data} />
+      <Header props={dataProject} />
+      <Infos props={dataProject} />
+      <Description props={dataProject} />
+      <ImgDesign props={dataProject} />
+      <IdentityGraphique props={dataProject} />
+      <IdentityColor props={dataProject} />
+      <DeviceMobile props={dataProject} />
+      <DeviceDesktop props={dataProject} />
+      <Text props={dataProject} />
+      <TemplateDesktopFull props={dataProject} />
+      <TemplateDesktop props={dataProject} />
+      <Cards props={dataProject} />
+      <VisuOutside props={dataProject} />
+      <div className="project-next" data-scroll-section>
+        <NavigationNext props={[dataProject, dataAllProject]} />
+      </div>
     </>
   );
 }
