@@ -122,7 +122,7 @@ const Carousel = ({ projets }: any) => {
     const titles = document.querySelectorAll(".info-work");
     const number = document.querySelector(".number span");
     const progressRound: HTMLElement | null =
-      document.querySelector(".wrap-progress");
+      document.querySelector(".wrap-progress img");
 
     titles.forEach((title: any, i: any) => {
       if (i === visibleIndex) {
