@@ -116,11 +116,16 @@
   .wrap-progress {
     pointer-events: none;
     position: absolute;
-    bottom: 45px;
-    right: 80px;
+    bottom: -5px;
+    right: 25px;
     z-index: 1;
-    width: 90px;
-    height: 90px;
+    width: 200px;
+    height: 200px;
+    .circle-text {
+      fill: #fff;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
   }
   .wrap-contact {
     position: absolute;
