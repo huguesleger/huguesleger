@@ -19,13 +19,26 @@ const NavigationNext = ({ props }: any) => {
   return (
     <div className="wrapper">
       <div className="content-next">
-        <div className="wrap-link">
+        <div
+          className="wrap-link"
+          data-scroll
+          data-scroll-speed="-6"
+          data-scroll-position="bottom"
+        >
           <HoverReveal
             image={getNextpost().imageSlider.url}
             widthImage={150}
             heightImage={220}
           >
-            <p className="title-project-next">Projet Suivant</p>
+            <div className="inner-title" data-scroll>
+              <p
+                className="title-project-next"
+                data-scroll
+                data-scroll-speed="3"
+              >
+                Projet Suivant
+              </p>
+            </div>
             <Link
               className="link-next-project"
               href={`/realisations/${getNextpost().slug}`}
