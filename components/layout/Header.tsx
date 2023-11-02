@@ -34,6 +34,7 @@ const Header = (): JSX.Element => {
                 <div className="item-wrap">
                   <span className="item">Réalisations</span>
                   <span className="item-hover">Réalisations</span>
+                  <span className="item-circle"></span>
                 </div>
               </Link>
               <Link
@@ -47,6 +48,7 @@ const Header = (): JSX.Element => {
                 <div className="item-wrap">
                   <span className="item">A propos</span>
                   <span className="item-hover">A propos</span>
+                  <span className="item-circle"></span>
                 </div>
               </Link>
             </nav>
