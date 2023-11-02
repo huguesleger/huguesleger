@@ -94,7 +94,7 @@ const CarouselItem = ({
     });
     setTimeout(function () {
       router.push(path);
-    }, 1650);
+    }, 1520);
   };
 
   const handleClose = (e: any) => {
@@ -105,9 +105,6 @@ const CarouselItem = ({
     clearTimeout(timeoutID.current);
     timeoutID.current = setTimeout(() => {
       setCloseActive(false);
-      const doc: any = document;
-      if (!doc) return;
-      doc.querySelector(".wrapper-canvas").classList.remove("active");
     }, 1500); // The duration of this timer depends on the duration of the plane's closing animation.
   };
 

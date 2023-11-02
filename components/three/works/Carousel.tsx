@@ -141,6 +141,9 @@ const Carousel = ({ projets }: any) => {
 
   useEffect(() => {
     const tl = gsap.timeline();
+    const wrapperCanvas = document.querySelector(".wrapper-canvas");
+    if (!wrapperCanvas) return;
+    wrapperCanvas.classList.add("disabled-scroll");
     if (!refItems.current) return;
     tl.fromTo(
       refItems.current.children[0].position,
@@ -168,6 +171,9 @@ const Carousel = ({ projets }: any) => {
               ease: "Power2.easeInOut",
             }
           );
+        },
+        onComplete: () => {
+          wrapperCanvas.classList.remove("disabled-scroll");
         },
       }
     );

@@ -42,6 +42,11 @@
   }
   .container-canvas {
     z-index: 1;
+    .wrapper-canvas {
+      &.disabled-scroll {
+        pointer-events: none !important;
+      }
+    }
   }
   .wrap-works {
     position: absolute;
