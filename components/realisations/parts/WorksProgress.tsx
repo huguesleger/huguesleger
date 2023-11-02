@@ -12,14 +12,10 @@ const WorksProgress = () => {
           />
         </defs>
         <text className="circle-text">
-          <textPath startOffset="0" xlinkHref="#progress-circle" aria-label="">
+          <textPath startOffset="0" xlinkHref="#progress-circle">
             Scroll to explore -
           </textPath>
-          <textPath
-            startOffset="50%"
-            xlinkHref="#progress-circle"
-            aria-label=""
-          >
+          <textPath startOffset="50%" xlinkHref="#progress-circle">
             Scroll to explore -
           </textPath>
         </text>
