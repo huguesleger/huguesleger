@@ -146,3 +146,57 @@
     }
   }
 }
+
+.btn-arrow {
+  display: inline-flex;
+  @include themed {
+    background-color: theme("secondary");
+  }
+  color: $dark_grey;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+  border-radius: 2rem;
+  align-items: center;
+  .btn-text {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    @include themed {
+      color: theme("primary");
+    }
+    .icon {
+      padding-right: 0.5rem;
+    }
+  }
+  .icon-arrow {
+    @include themed {
+      background-color: theme("primary");
+    }
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    transform: scale(0.2);
+    transition: 0.2s transform ease-in-out;
+    svg {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      @include themed {
+        stroke: theme("secondary");
+      }
+    }
+  }
+  &:hover {
+    .icon-arrow {
+      transform: scale(1);
+    }
+    svg {
+      opacity: 1;
+    }
+  }
+  &.btn-md {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+  }
+}

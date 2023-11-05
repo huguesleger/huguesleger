@@ -1,0 +1,41 @@
+.page-error {
+  .wrap-content {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .footer {
+    margin-top: auto;
+  }
+  .error-infos {
+    margin-top: auto;
+    margin-bottom: 2rem;
+    position: relative;
+    p {
+      font-family: $font_gallient;
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+  }
+  .infinite-keywords {
+    margin-left: -4.375rem;
+    margin-right: -4.375rem;
+  }
+  .wrap-btn {
+    display: flex;
+    justify-content: center;
+    a {
+      margin-top: 3rem;
+    }
+  }
+  .btn-progress {
+    .progress {
+      .progress-path {
+        @include themed {
+          stroke: theme("quaternary");
+        }
+      }
+    }
+  }
+}
