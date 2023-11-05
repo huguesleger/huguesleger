@@ -82,3 +82,65 @@
     stroke-dashoffset: 0;
   }
 }
+
+.btn-switch-mode {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 40px;
+  height: 22px;
+  line-height: 20px;
+  padding: 0;
+  vertical-align: middle;
+  border-radius: 20px 20px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+  overflow: hidden;
+  .btn-switch-mode-inner {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+    svg {
+      width: 12px;
+      height: 12px;
+      position: relative;
+      display: block;
+    }
+  }
+  .btn-switch-mode-inner-checked,
+  .btn-switch-mode-inner-unchecked {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .btn-switch-mode-inner-checked {
+    opacity: 1;
+  }
+
+  .btn-switch-mode-inner-unchecked {
+    opacity: 0;
+  }
+  &.btn-switch-mode-checked {
+    .btn-switch-mode-inner {
+      transform: translateX(18px);
+    }
+    .btn-switch-mode-inner-checked {
+      opacity: 0;
+    }
+    .btn-switch-mode-inner-unchecked {
+      opacity: 1;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import Cursor from "@/components/layout/Cursor";
 import Header from "@/components/layout/Header";
 import ScrollLoco from "@/components/layout/ScrollLoco";
 import Loader from "@/components/Loader";
+import { ThemeProvider } from "@/theme/ThemeProvider";
 import type { Metadata } from "next";
 import "../scss/main.scss";
 import { AppContextProvider } from "./context/AppContext";
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -33,22 +34,18 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap"
           rel="stylesheet"
         ></link>
-        <script
-          src="https://kit.fontawesome.com/eb1ce33b69.js"
-          crossOrigin="anonymous"
-          async
-          defer
-        ></script>
         <meta name="theme-color" content="#171717" />
       </head>
       <body>
         <div id="app" className="app">
-          <AppContextProvider>
-            <Loader />
-            <Cursor />
-            <Header />
-            <ScrollLoco>{children}</ScrollLoco>
-          </AppContextProvider>
+          <ThemeProvider attribute="data-theme" enableSystem={true}>
+            <AppContextProvider>
+              <Loader />
+              <Cursor />
+              <Header />
+              <ScrollLoco>{children}</ScrollLoco>
+            </AppContextProvider>
+          </ThemeProvider>
         </div>
       </body>
     </html>

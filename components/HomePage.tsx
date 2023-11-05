@@ -7,6 +7,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import Social from "./Social";
 import Sphere from "./three/home/Sphere";
+import { ArrowDownRight } from "lucide-react";
 
 type IntroType = {
   title: string;
@@ -52,15 +53,13 @@ const Intro = ({
         </div> */}
         <div className="block-bottom">
           <div className="wrap-enter">
-            <div className="inner-arrow">
-              <Image
-                src="/images/arrow-enter.svg"
-                width={90}
-                height={90}
-                alt="entrez"
-                priority
-              />
-            </div>
+            <ArrowDownRight
+              strokeWidth={1.5}
+              width={120}
+              height={120}
+              strokeLinecap="inherit"
+              strokeLinejoin="inherit"
+            />
             <Link href="/realisations" className="inner-enter" data-cursor>
               <span className="title-enter">{formatTxt(titleEnter)}</span>
               <span className="txt-enter">{formatTxt(textEnter)}</span>

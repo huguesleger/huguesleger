@@ -34,13 +34,9 @@
       display: flex;
       align-items: flex-end;
       pointer-events: initial;
-      .inner-arrow {
-        transform: rotate(-45deg);
-      }
       .inner-enter {
         display: flex;
         flex-direction: column;
-        padding-left: 0.5rem;
         overflow: hidden;
         cursor: pointer;
         .title-enter {

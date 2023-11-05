@@ -10,8 +10,12 @@
         overflow: hidden;
         padding-top: 3rem;
       }
-      .icon-emoji {
-        font-size: 3rem;
+      .section-title {
+        display: flex;
+        align-items: center;
+      }
+      .icon {
+        display: inline-flex;
         margin-left: 1rem;
       }
     }

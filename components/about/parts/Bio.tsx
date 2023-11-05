@@ -1,3 +1,4 @@
+import Icon from "@/components/layout/Icons";
 import Image from "next/image";
 import React from "react";
 import { StructuredText } from "react-datocms/structured-text";
@@ -13,7 +14,9 @@ const Bio = ({ props }: any) => {
               <div className="inner-title" data-scroll>
                 <h2 className="section-title" data-scroll data-scroll-speed="3">
                   {bio.titreBio}
-                  <span className="icon-emoji">{bio.iconBio}</span>
+                  <span className="icon">
+                    <Icon size={48} name={bio.iconBio} strokeWidth={1.25} />
+                  </span>
                 </h2>
               </div>
               <div className="inner-txt" data-scroll>

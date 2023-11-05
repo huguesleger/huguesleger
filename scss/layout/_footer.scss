@@ -4,7 +4,12 @@
   justify-content: space-between;
   align-items: center;
   .copyright {
+    display: flex;
+    align-items: center;
     font-size: 0.6875rem;
+    span {
+      padding-left: 0.25rem;
+    }
   }
   .inner-social {
     display: flex;

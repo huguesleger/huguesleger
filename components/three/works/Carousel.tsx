@@ -197,7 +197,7 @@ const Carousel = ({ projets }: any) => {
   --------------------*/
   const renderSlider = () => {
     return (
-      <group ref={refItems} name="wrapper">
+      <group ref={refItems} name="betty">
         {works.map((item: any, i: any) => (
           <group
             ref={setRoot}

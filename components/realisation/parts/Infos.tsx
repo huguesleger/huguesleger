@@ -2,6 +2,7 @@ import SplittingWrapperWord from "@/components/splitting/SplittingWrapperWord";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
 const Infos = ({ props }: any) => {
   const infos = props;
@@ -33,11 +34,10 @@ const Infos = ({ props }: any) => {
                   >
                     <span className="link-text">Voir le site</span>
                     <span className="link-arrow">
-                      <Image
-                        src="/images/link-arrow-white.svg"
-                        width={24}
-                        height={24}
-                        alt="Voir le site"
+                      <ArrowUpRight
+                        size={24}
+                        strokeWidth={1.25}
+                        stroke="#fff"
                       />
                     </span>
                   </Link>

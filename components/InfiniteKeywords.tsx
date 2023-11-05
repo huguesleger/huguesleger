@@ -1,8 +1,9 @@
 import React from "react";
+import Icon from "./layout/Icons";
 
 type InfiniteKeywordsType = {
   title: string;
-  icon: string;
+  icon: any;
 };
 
 const InfiniteKeywords = ({
@@ -13,7 +14,7 @@ const InfiniteKeywords = ({
     <span className="wrap-keyword">
       {title}
       <span className="separate-keyword">
-        <i className={icon} aria-hidden></i>
+        <Icon size={32} stroke="inherit" fill="currentColor" name={icon} />
       </span>
     </span>
   );

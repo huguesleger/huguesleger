@@ -7,18 +7,22 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { Mesh, ShaderMaterial } from "three";
 import gsap from "gsap/all";
+import { useTheme } from "next-themes";
 
 const DisformSphere = () => {
   const shaderRef = useRef<ShaderMaterial>(null);
   const ref = useRef<Mesh>(null);
+  const { theme } = useTheme();
 
   const uniforms = useRef({
     uTime: { value: 0 },
     uFrequency: { value: 2.0 },
-    // uPrimaryColor: { value: new THREE.Color("#383838") },
-    // uSecondaryColor: { value: new THREE.Color("#686968") },
-    uPrimaryColor: { value: new THREE.Color("#BEBBBB") },
-    uSecondaryColor: { value: new THREE.Color("#383838") },
+    uPrimaryColor: {
+      value: new THREE.Color("#BEBBBB"),
+    },
+    uSecondaryColor: {
+      value: new THREE.Color("#383838"),
+    },
   });
 
   useEffect(() => {
@@ -26,7 +30,24 @@ const DisformSphere = () => {
     if (!btnEnter) return;
     btnEnter.addEventListener("mouseenter", onMouseEnter);
     btnEnter.addEventListener("mouseleave", onMouseOut);
-  }, []);
+
+    if (!shaderRef.current) return;
+    if (theme === "light" || theme === "system") {
+      shaderRef.current.uniforms.uPrimaryColor.value = new THREE.Color(
+        "#BEBBBB"
+      );
+      shaderRef.current.uniforms.uSecondaryColor.value = new THREE.Color(
+        "#383838"
+      );
+    } else {
+      shaderRef.current.uniforms.uPrimaryColor.value = new THREE.Color(
+        "#383838"
+      );
+      shaderRef.current.uniforms.uSecondaryColor.value = new THREE.Color(
+        "#686968"
+      );
+    }
+  }, [theme]);
 
   useFrame((state, delta) => {
     if (!shaderRef.current) return;

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = (): JSX.Element => {
   const pathname = usePathname();
@@ -52,11 +53,12 @@ const Header = (): JSX.Element => {
                 </div>
               </Link>
             </nav>
-            <button className="btn btn-effect btn-theme-mode">
+            {/* <button className="btn btn-effect btn-theme-mode">
               <span>
                 <span>mode sombre</span>
               </span>
-            </button>
+            </button> */}
+            <ThemeToggle />
           </div>
         </div>
       </div>

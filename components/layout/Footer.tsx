@@ -1,12 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import { Facebook, Linkedin, Instagram, Copyright } from "lucide-react";
 
 const Footer = () => {
   return (
     <div className="footer">
       <div className="copyright">
-        <i className="far fa-copyright" aria-hidden></i> HL 2023. Tous droit
-        réservés
+        <Copyright size={14} strokeWidth={1.25} />
+        <span>HL 2023. Tous droit réservés</span>
       </div>
       <ul className="inner-social">
         <li className="social-icon">
@@ -24,7 +25,7 @@ const Footer = () => {
                 pathLength="1"
               />
             </svg>
-            <i className="fab fa-facebook-f" aria-hidden></i>
+            <Facebook size={18} fill="currentColor" stroke="inherit" />
           </Link>
         </li>
         <li className="social-icon">
@@ -42,7 +43,7 @@ const Footer = () => {
                 pathLength="1"
               />
             </svg>
-            <i className="fab fa-linkedin-in" aria-hidden></i>
+            <Linkedin size={18} fill="currentColor" stroke="inherit" />
           </Link>
         </li>
         <li className="social-icon">
@@ -60,7 +61,7 @@ const Footer = () => {
                 pathLength="1"
               />
             </svg>
-            <i className="fab fa-instagram" aria-hidden></i>
+            <Instagram size={18} strokeWidth={1.5} />
           </Link>
         </li>
       </ul>
