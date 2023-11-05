@@ -7,7 +7,9 @@
     .btn-progress {
       .progress {
         .progress-path {
-          stroke: $dark_grey;
+          @include themed {
+            stroke: theme("quaternary");
+          }
         }
       }
     }

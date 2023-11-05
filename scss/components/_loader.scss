@@ -4,7 +4,9 @@
   top: 0;
   width: 100%;
   z-index: 100;
-  background-color: #fff;
+  @include themed {
+    background-color: theme("primary");
+  }
   .loader {
     position: absolute;
     left: 0;

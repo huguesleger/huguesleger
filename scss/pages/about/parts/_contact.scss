@@ -1,7 +1,11 @@
 .section-contact {
   min-height: 100vh;
-  background-color: $dark_grey;
-  color: #fff;
+  @include themed {
+    background-color: theme("secondary");
+  }
+  @include themed {
+    color: theme("tertiary");
+  }
   .inner-contact {
     display: flex;
     flex-direction: column;

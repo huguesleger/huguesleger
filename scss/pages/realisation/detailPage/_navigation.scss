@@ -1,5 +1,7 @@
 .project-next {
-  background-color: $dark_grey;
+  @include themed {
+    background-color: theme("secondary");
+  }
   height: 100vh;
   .wrapper {
     height: 100%;
@@ -9,6 +11,9 @@
       justify-content: center;
       height: 100%;
       color: #fff;
+      @include themed {
+        color: theme("tertiary");
+      }
       .wrap-link {
         width: 100%;
         text-align: center;

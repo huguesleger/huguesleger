@@ -1,5 +1,7 @@
 .wrap-rounded {
-  background: #fff;
+  @include themed {
+    background-color: theme("primary");
+  }
   width: 100%;
   position: relative;
   height: 0;
@@ -18,7 +20,9 @@
       width: 150%;
       display: block;
       position: absolute;
-      background: #fff;
+      @include themed {
+        background-color: theme("primary");
+      }
       height: 750%;
       left: 50%;
       border-radius: 50%;

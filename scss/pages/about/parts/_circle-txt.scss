@@ -1,12 +1,16 @@
 .section-circle-txt {
-  background-color: $dark_grey;
+  @include themed {
+    background-color: theme("secondary");
+  }
   .circles {
     max-width: 950px;
     display: block;
     margin: 0 auto;
     .circles-text {
       text-transform: uppercase;
-      fill: #fff;
+      @include themed {
+        fill: theme("tertiary");
+      }
       transform-origin: 50% 50%;
     }
     .circles-text-1 {

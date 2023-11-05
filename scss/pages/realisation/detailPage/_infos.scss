@@ -37,4 +37,13 @@
       }
     }
   }
+  &.text-dark {
+    .wrap-infos {
+      .inner-info {
+        .name-info {
+          border-bottom: 1px solid #000;
+        }
+      }
+    }
+  }
 }

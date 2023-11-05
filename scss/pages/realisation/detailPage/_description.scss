@@ -15,7 +15,9 @@
         color: $light_grey;
       }
       strong {
-        color: #000;
+        @include themed {
+          color: theme("quaternary");
+        }
         font-family: $font_gallient;
         font-weight: 700;
         text-transform: uppercase;
