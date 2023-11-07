@@ -1,6 +1,7 @@
 .wrapper {
-  padding-left: 4.375rem;
-  padding-right: 4.375rem;
+  padding-left: clamp(1rem, -0.2536rem + 5.1429vw, 4.375rem);
+
+  padding-right: clamp(1rem, -0.2536rem + 5.1429vw, 4.375rem);
 }
 
 .container {

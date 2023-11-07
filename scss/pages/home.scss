@@ -1,11 +1,12 @@
 .home {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 7rem;
   padding-bottom: 2rem;
   height: 100vh;
-  // color: $ultralight_grey;
   .wrap-title {
     .inner-title {
       overflow: hidden;
@@ -13,7 +14,7 @@
         display: inline-flex;
         flex-direction: column;
         text-transform: uppercase;
-        font-size: 4.5rem;
+        font-size: clamp(2.25rem, 1.4143rem + 3.4286vw, 4.5rem);
         line-height: 1;
         font-family: $font_gallient;
         letter-spacing: 2px;
@@ -30,10 +31,18 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
     .wrap-enter {
+      position: relative;
       display: flex;
       align-items: flex-end;
       pointer-events: initial;
+      padding-top: 0.5rem;
+      svg {
+        position: absolute;
+        top: -100%;
+        left: -33px;
+      }
       .inner-enter {
         display: flex;
         flex-direction: column;
@@ -41,21 +50,29 @@
         cursor: pointer;
         .title-enter {
           font-family: $font_gallient;
-          font-size: 3rem;
+          font-size: clamp(2rem, 1.6286rem + 1.5238vw, 3rem);
           line-height: 1;
           text-transform: uppercase;
           padding-bottom: 0.3rem;
         }
         .txt-enter {
           color: $light_grey;
+          font-size: clamp(0.875rem, 0.8286rem + 0.1905vw, 1rem);
         }
       }
     }
     .city {
       display: flex;
+      margin-left: auto;
       img {
         animation: 10s linear infinite rotate;
       }
     }
+  }
+}
+@media (max-width: 370px) {
+  .home .block-bottom .city img {
+    width: 90px;
+    height: 90px;
   }
 }

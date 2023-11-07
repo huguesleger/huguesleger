@@ -36,3 +36,9 @@ body {
   font-family: $font_gallient;
   text-transform: uppercase;
 }
+
+@media (max-width: 1023) {
+  #app {
+    position: relative;
+  }
+}

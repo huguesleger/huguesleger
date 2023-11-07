@@ -2,8 +2,9 @@
   position: absolute;
   transform: translateY(-50%);
   top: 50%;
+  z-index: 2;
   &.social-home {
-    right: 3rem;
+    right: 4vw;
     .btn-progress {
       .progress {
         .progress-path {
@@ -14,7 +15,12 @@
       }
     }
   }
-  &.social-work {
-    left: 3rem;
+}
+
+@media (max-width: 390px) {
+  .social {
+    &.social-home {
+      right: 1vw;
+    }
   }
 }
