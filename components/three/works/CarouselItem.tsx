@@ -45,12 +45,12 @@ const CarouselItem = ({
       ease: "power3.out",
       delay: isActive ? 0 : 2,
     });
-    gsap.to($root.current.parent.parent.parent.rotation, {
-      z: isActive ? 0 : 0.08,
-      duration: 0.2,
-      ease: "power3.out",
-      delay: isActive ? 0 : 2,
-    });
+    // gsap.to($root.current.parent.parent.parent.rotation, {
+    //   z: isActive ? 0 : 0.08,
+    //   duration: 0.2,
+    //   ease: "power3.out",
+    //   delay: isActive ? 0 : 2,
+    // });
     gsap.to($root.current.scale, {
       x: isActive ? 0.8 : 1,
       y: isActive ? 0.8 : 1,

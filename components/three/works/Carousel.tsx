@@ -184,14 +184,14 @@ const Carousel = ({ projets }: any) => {
   /*--------------------
   Render Plane Events
   --------------------*/
-  const renderPlaneEvents = () => {
-    return (
-      <mesh position={[0, 0, -0.01]} onWheel={handleWheel}>
-        <planeGeometry args={[viewport.width, viewport.height]} />
-        <meshBasicMaterial transparent={true} opacity={0} />
-      </mesh>
-    );
-  };
+  // const renderPlaneEvents = () => {
+  //   return (
+  //     <mesh position={[0, 0, -0.01]} onWheel={handleWheel}>
+  //       <planeGeometry args={[viewport.width, viewport.height]} />
+  //       <meshBasicMaterial transparent={true} opacity={0} />
+  //     </mesh>
+  //   );
+  // };
 
   /*--------------------
   Render Slider
@@ -222,16 +222,19 @@ const Carousel = ({ projets }: any) => {
   };
 
   return (
-    <ScrollControls pages={1} style={{ left: "15px" }}>
-      <Scroll>
-        <group>
-          <group rotation={[0, 0, 0.08]}>
-            {renderPlaneEvents()}
+    <group>
+      <ScrollControls
+        pages={height + (2 * gap) / works.length}
+        style={{ opacity: "0" }}
+      >
+        <Scroll>
+          <group>
+            {/* {renderPlaneEvents()} */}
             {renderSlider()}
           </group>
-        </group>
-      </Scroll>
-    </ScrollControls>
+        </Scroll>
+      </ScrollControls>
+    </group>
   );
 };
 
