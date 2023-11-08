@@ -8,4 +8,7 @@
   left: 0;
   right: 0;
   width: 100%;
+  canvas {
+    touch-action: auto !important;
+  }
 }
