@@ -7,6 +7,7 @@ import CarouselItem from "./CarouselItem";
 import { lerp } from "../../utils";
 import { Group } from "three";
 import { useEffect } from "react";
+import { Scroll, ScrollControls } from "@react-three/drei";
 
 /*------------------------------
 Plane Settings
@@ -221,12 +222,16 @@ const Carousel = ({ projets }: any) => {
   };
 
   return (
-    <group>
-      <group rotation={[0, 0, 0.08]}>
-        {renderPlaneEvents()}
-        {renderSlider()}
-      </group>
-    </group>
+    <ScrollControls pages={1} style={{ left: "15px" }}>
+      <Scroll>
+        <group>
+          <group rotation={[0, 0, 0.08]}>
+            {renderPlaneEvents()}
+            {renderSlider()}
+          </group>
+        </group>
+      </Scroll>
+    </ScrollControls>
   );
 };
 
