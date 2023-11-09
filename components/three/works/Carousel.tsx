@@ -7,7 +7,7 @@ import CarouselItem from "./CarouselItem";
 import { lerp } from "../../utils";
 import { Group } from "three";
 import { useEffect } from "react";
-import { Scroll, ScrollControls } from "@react-three/drei";
+import { Scroll, ScrollControls, useScroll } from "@react-three/drei";
 
 /*------------------------------
 Plane Settings
@@ -66,21 +66,23 @@ const Carousel = ({ projets }: any) => {
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
 
-      if (!$items) return;
-      let wholeHeight = ($items.length * positionImg - gap - height) * 100;
+      // console.log(scrollPos, "carousel");
 
-      if (currentScroll <= 0) {
-        currentScroll = 0;
-        scrollPos = 0;
-        refItems.current.position.y = currentScroll;
-      } else {
-        refItems.current.position.y = currentScroll / 100;
-      }
-      if (currentScroll >= wholeHeight) {
-        currentScroll = wholeHeight;
-        scrollPos = 0;
-        refItems.current.position.y = wholeHeight / 100;
-      }
+      if (!$items) return;
+      // let wholeHeight = ($items.length * positionImg - gap - height) * 100;
+
+      // if (currentScroll <= 0) {
+      //   currentScroll = 0;
+      //   scrollPos = 0;
+      //   refItems.current.position.y = currentScroll;
+      // } else {
+      //   refItems.current.position.y = currentScroll / 100;
+      // }
+      // if (currentScroll >= wholeHeight) {
+      //   currentScroll = wholeHeight;
+      //   scrollPos = 0;
+      //   refItems.current.position.y = wholeHeight / 100;
+      // }
 
       $items.forEach((el: any) => {
         const mesh: any = el.children[0].children[0];
@@ -184,14 +186,14 @@ const Carousel = ({ projets }: any) => {
   /*--------------------
   Render Plane Events
   --------------------*/
-  // const renderPlaneEvents = () => {
-  //   return (
-  //     <mesh position={[0, 0, -0.01]} onWheel={handleWheel}>
-  //       <planeGeometry args={[viewport.width, viewport.height]} />
-  //       <meshBasicMaterial transparent={true} opacity={0} />
-  //     </mesh>
-  //   );
-  // };
+  const renderPlaneEvents = () => {
+    return (
+      <mesh position={[0, 0, -0.01]} onWheel={handleWheel}>
+        <planeGeometry args={[viewport.width, viewport.height]} />
+        <meshBasicMaterial transparent={true} opacity={0} />
+      </mesh>
+    );
+  };
 
   /*--------------------
   Render Slider
@@ -227,12 +229,10 @@ const Carousel = ({ projets }: any) => {
         pages={height + (2 * gap) / works.length}
         style={{ opacity: "0" }}
       >
-        <Scroll>
-          <group>
-            {/* {renderPlaneEvents()} */}
-            {renderSlider()}
-          </group>
-        </Scroll>
+        <group>
+          {renderPlaneEvents()}
+          <Scroll>{renderSlider()}</Scroll>
+        </group>
       </ScrollControls>
     </group>
   );
