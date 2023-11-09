@@ -52,6 +52,8 @@ const Carousel = ({ projets }: any) => {
   }, [$root]);
   let currentProgress = 0;
   let progress = 100 / works.length - 1;
+  const isDown = useRef(false);
+  const startY = useRef(0);
 
   /*--------------------
   RAF
@@ -69,20 +71,20 @@ const Carousel = ({ projets }: any) => {
       // console.log(scrollPos, "carousel");
 
       if (!$items) return;
-      // let wholeHeight = ($items.length * positionImg - gap - height) * 100;
+      let wholeHeight = ($items.length * positionImg - gap - height) * 100;
 
-      // if (currentScroll <= 0) {
-      //   currentScroll = 0;
-      //   scrollPos = 0;
-      //   refItems.current.position.y = currentScroll;
-      // } else {
-      //   refItems.current.position.y = currentScroll / 100;
-      // }
-      // if (currentScroll >= wholeHeight) {
-      //   currentScroll = wholeHeight;
-      //   scrollPos = 0;
-      //   refItems.current.position.y = wholeHeight / 100;
-      // }
+      if (currentScroll <= 0) {
+        currentScroll = 0;
+        scrollPos = 0;
+        refItems.current.position.y = currentScroll;
+      } else {
+        refItems.current.position.y = currentScroll / 100;
+      }
+      if (currentScroll >= wholeHeight) {
+        currentScroll = wholeHeight;
+        scrollPos = 0;
+        refItems.current.position.y = wholeHeight / 100;
+      }
 
       $items.forEach((el: any) => {
         const mesh: any = el.children[0].children[0];
@@ -143,6 +145,33 @@ const Carousel = ({ projets }: any) => {
       currentProgress + currentScroll / progress + "deg";
   };
 
+  /*--------------------
+  Handle Down
+  --------------------*/
+  const handleDown = (e: any) => {
+    if (activePlane !== null) return;
+    isDown.current = true;
+    startY.current = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+  };
+
+  /*--------------------
+  Handle Up
+  --------------------*/
+  const handleUp = () => {
+    isDown.current = false;
+  };
+
+  /*--------------------
+  Handle Move
+  --------------------*/
+  const handleMove = (e: any) => {
+    if (activePlane !== null || !isDown.current) return;
+    const y = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+    const mouseProgress = (y - startY.current) * scrollPos;
+    currentScroll = currentScroll + mouseProgress;
+    startY.current = y;
+  };
+
   useEffect(() => {
     const tl = gsap.timeline();
     const wrapperCanvas = document.querySelector(".wrapper-canvas");
@@ -188,7 +217,15 @@ const Carousel = ({ projets }: any) => {
   --------------------*/
   const renderPlaneEvents = () => {
     return (
-      <mesh position={[0, 0, -0.01]} onWheel={handleWheel}>
+      <mesh
+        position={[0, 0, -0.01]}
+        onWheel={handleWheel}
+        onPointerDown={handleDown}
+        onPointerUp={handleUp}
+        onPointerMove={handleMove}
+        onPointerLeave={handleUp}
+        onPointerCancel={handleUp}
+      >
         <planeGeometry args={[viewport.width, viewport.height]} />
         <meshBasicMaterial transparent={true} opacity={0} />
       </mesh>
@@ -225,15 +262,10 @@ const Carousel = ({ projets }: any) => {
 
   return (
     <group>
-      <ScrollControls
-        pages={height + (2 * gap) / works.length}
-        style={{ opacity: "0" }}
-      >
-        <group>
-          {renderPlaneEvents()}
-          <Scroll>{renderSlider()}</Scroll>
-        </group>
-      </ScrollControls>
+      <group>
+        {renderPlaneEvents()}
+        {renderSlider()}
+      </group>
     </group>
   );
 };
