@@ -8,6 +8,7 @@ import { lerp } from "../../utils";
 import { Group } from "three";
 import { useEffect } from "react";
 import { Scroll, ScrollControls, useScroll } from "@react-three/drei";
+import VirtualScroll from "virtual-scroll";
 
 /*------------------------------
 Plane Settings
@@ -22,6 +23,7 @@ let positionImg = height + gap;
 let scrollTarget = 0;
 let scrollPos = 0;
 let currentScroll = 0;
+let position = 0;
 
 /*------------------------------
 Gsap Defaults
@@ -52,8 +54,9 @@ const Carousel = ({ projets }: any) => {
   }, [$root]);
   let currentProgress = 0;
   let progress = 100 / works.length - 1;
-  const isDown = useRef(false);
-  const startY = useRef(0);
+
+  const scroller = new VirtualScroll();
+  const refScroll = useRef<any>(null);
 
   /*--------------------
   RAF
@@ -63,10 +66,16 @@ const Carousel = ({ projets }: any) => {
 
     if (!refItems.current) return;
 
+    scroller.on((e) => {
+      scrollTarget = e.deltaY / 3;
+      // console.log(position);
+    });
     if (scrollIn === true) {
       scrollPos -= (scrollPos - scrollTarget) * 0.1;
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
+
+      // refItems.current.position.y = currentScroll;
 
       // console.log(scrollPos, "carousel");
 
@@ -145,33 +154,6 @@ const Carousel = ({ projets }: any) => {
       currentProgress + currentScroll / progress + "deg";
   };
 
-  /*--------------------
-  Handle Down
-  --------------------*/
-  const handleDown = (e: any) => {
-    if (activePlane !== null) return;
-    isDown.current = true;
-    startY.current = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-  };
-
-  /*--------------------
-  Handle Up
-  --------------------*/
-  const handleUp = () => {
-    isDown.current = false;
-  };
-
-  /*--------------------
-  Handle Move
-  --------------------*/
-  const handleMove = (e: any) => {
-    if (activePlane !== null || !isDown.current) return;
-    const y = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-    const mouseProgress = (y - startY.current) * scrollPos;
-    currentScroll = currentScroll + mouseProgress;
-    startY.current = y;
-  };
-
   useEffect(() => {
     const tl = gsap.timeline();
     const wrapperCanvas = document.querySelector(".wrapper-canvas");
@@ -217,15 +199,7 @@ const Carousel = ({ projets }: any) => {
   --------------------*/
   const renderPlaneEvents = () => {
     return (
-      <mesh
-        position={[0, 0, -0.01]}
-        onWheel={handleWheel}
-        onPointerDown={handleDown}
-        onPointerUp={handleUp}
-        onPointerMove={handleMove}
-        onPointerLeave={handleUp}
-        onPointerCancel={handleUp}
-      >
+      <mesh position={[0, 0, -0.01]} ref={refScroll}>
         <planeGeometry args={[viewport.width, viewport.height]} />
         <meshBasicMaterial transparent={true} opacity={0} />
       </mesh>
@@ -237,26 +211,28 @@ const Carousel = ({ projets }: any) => {
   --------------------*/
   const renderSlider = () => {
     return (
-      <group ref={refItems} name="betty">
-        {works.map((item: any, i: any) => (
-          <group
-            ref={setRoot}
-            position={[0, -i * positionImg, 0]}
-            key={i}
-            name="img"
-          >
-            <CarouselItem
-              width={width}
-              height={height}
-              setActivePlane={setActivePlane}
-              activePlane={activePlane}
+      <>
+        <group ref={refItems} name="betty">
+          {works.map((item: any, i: any) => (
+            <group
+              ref={setRoot}
+              position={[0, -i * positionImg, 0]}
               key={i}
-              item={item}
-              index={i}
-            />
-          </group>
-        ))}
-      </group>
+              name="img"
+            >
+              <CarouselItem
+                width={width}
+                height={height}
+                setActivePlane={setActivePlane}
+                activePlane={activePlane}
+                key={i}
+                item={item}
+                index={i}
+              />
+            </group>
+          ))}
+        </group>
+      </>
     );
   };
 
