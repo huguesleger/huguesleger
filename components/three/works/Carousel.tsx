@@ -67,7 +67,7 @@ const Carousel = ({ projets }: any) => {
       // handleWheel(e);
     });
     if (scrollIn === true) {
-      scrollPos = (scrollPos - scrollTarget) * 0.3;
+      scrollPos -= (scrollPos + scrollTarget) * 0.3;
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
 
