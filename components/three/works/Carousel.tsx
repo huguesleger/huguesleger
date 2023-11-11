@@ -64,7 +64,7 @@ const Carousel = ({ projets }: any) => {
 
     scroller.on((e) => {
       scrollTarget = e.deltaY / 3;
-      handleWheel(e);
+      // handleWheel(e);
     });
     if (scrollIn === true) {
       scrollPos = (scrollPos - scrollTarget) * 0.3;
