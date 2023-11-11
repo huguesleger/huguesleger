@@ -1,13 +1,11 @@
 "use client";
 
 import { useRef, useState, useMemo } from "react";
-import { Events, useFrame, useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import CarouselItem from "./CarouselItem";
 import { lerp } from "../../utils";
-import { Group } from "three";
 import { useEffect } from "react";
-import { Scroll, ScrollControls, useScroll } from "@react-three/drei";
 import VirtualScroll from "virtual-scroll";
 
 /*------------------------------
@@ -23,7 +21,6 @@ let positionImg = height + gap;
 let scrollTarget = 0;
 let scrollPos = 0;
 let currentScroll = 0;
-let position = 0;
 
 /*------------------------------
 Gsap Defaults
@@ -56,7 +53,6 @@ const Carousel = ({ projets }: any) => {
   let progress = 100 / works.length - 1;
 
   const scroller = new VirtualScroll();
-  const refScroll = useRef<any>(null);
 
   /*--------------------
   RAF
@@ -68,16 +64,12 @@ const Carousel = ({ projets }: any) => {
 
     scroller.on((e) => {
       scrollTarget = e.deltaY / 3;
-      // console.log(position);
+      handleWheel(e);
     });
     if (scrollIn === true) {
-      scrollPos -= (scrollPos - scrollTarget) * 0.1;
+      scrollPos = (scrollPos - scrollTarget) * 0.3;
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
-
-      // refItems.current.position.y = currentScroll;
-
-      // console.log(scrollPos, "carousel");
 
       if (!$items) return;
       let wholeHeight = ($items.length * positionImg - gap - height) * 100;
@@ -199,7 +191,7 @@ const Carousel = ({ projets }: any) => {
   --------------------*/
   const renderPlaneEvents = () => {
     return (
-      <mesh position={[0, 0, -0.01]} ref={refScroll}>
+      <mesh position={[0, 0, -0.01]}>
         <planeGeometry args={[viewport.width, viewport.height]} />
         <meshBasicMaterial transparent={true} opacity={0} />
       </mesh>
