@@ -65,40 +65,40 @@ const Carousel = ({ projets }: any) => {
     if (!refItems.current) return;
 
     scroller.on((e) => {
-      scrollTarget = e.deltaY / 10;
+      scrollTarget = e.deltaY / 500;
       // handleWheel(e);
     });
     if (scrollIn === true) {
       // scrollPos -= (scrollPos + scrollTarget) * 0.1;
       // scrollTarget *= 0.9;
       // currentScroll += scrollPos;
-      scrollPos -= (scrollPos + scrollTarget) * 0.9;
-      scrollTarget *= 0.1;
+      scrollPos -= (scrollPos + scrollTarget) * 0.09;
+      scrollTarget *= 0.9;
       currentScroll += scrollPos;
 
       // console.log(scrollPos);
 
       if (!$items) return;
-      let wholeHeight = ($items.length * positionImg - gap - height) * 100;
+      let wholeHeight = $items.length * positionImg - gap - height;
 
       if (currentScroll <= 0) {
         currentScroll = 0;
         scrollPos = 0;
         refItems.current.position.y = currentScroll;
       } else {
-        refItems.current.position.y = currentScroll / 100;
+        refItems.current.position.y = currentScroll;
       }
       if (currentScroll >= wholeHeight) {
         currentScroll = wholeHeight;
         scrollPos = 0;
-        refItems.current.position.y = wholeHeight / 100;
+        refItems.current.position.y = wholeHeight;
       }
 
       $items.forEach((el: any) => {
         const mesh: any = el.children[0].children[0];
         mesh.material.uniforms.uShift.value = lerp(
           mesh.material.uniforms.uShift.value,
-          scrollPos * 0.05,
+          scrollPos * 2.5,
           0.1
         );
       });
