@@ -65,14 +65,18 @@ const Carousel = ({ projets }: any) => {
     if (!refItems.current) return;
 
     scroller.on((e) => {
-      scrollTarget = e.deltaY / 100;
+      if (wW <= 1024) {
+        scrollTarget = e.deltaY / 100;
+      } else {
+        scrollTarget = e.deltaY / 500;
+      }
       // handleWheel(e);
     });
     if (scrollIn === true) {
       // scrollPos -= (scrollPos + scrollTarget) * 0.1;
       // scrollTarget *= 0.9;
       // currentScroll += scrollPos;
-      scrollPos -= (scrollPos + scrollTarget) * 0.09;
+      scrollPos -= (scrollPos + scrollTarget) * 0.1;
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
 
@@ -96,11 +100,19 @@ const Carousel = ({ projets }: any) => {
 
       $items.forEach((el: any) => {
         const mesh: any = el.children[0].children[0];
-        mesh.material.uniforms.uShift.value = lerp(
-          mesh.material.uniforms.uShift.value,
-          scrollPos * 2.5,
-          0.1
-        );
+        if (wW <= 1024) {
+          mesh.material.uniforms.uShift.value = lerp(
+            mesh.material.uniforms.uShift.value,
+            scrollPos * 2.5,
+            0.1
+          );
+        } else {
+          mesh.material.uniforms.uShift.value = lerp(
+            mesh.material.uniforms.uShift.value,
+            scrollPos * 3.5,
+            0.1
+          );
+        }
       });
     }
 
