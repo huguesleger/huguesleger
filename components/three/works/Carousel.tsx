@@ -201,7 +201,7 @@ const Carousel = ({ projets }: any) => {
     scroller.on((e) => {
       handleWheel();
     });
-  }, [scroller]);
+  }, [refItems.current]);
 
   /*--------------------
   Render Plane Events
