@@ -73,14 +73,9 @@ const Carousel = ({ projets }: any) => {
       // handleWheel(e);
     });
     if (scrollIn === true) {
-      // scrollPos -= (scrollPos + scrollTarget) * 0.1;
-      // scrollTarget *= 0.9;
-      // currentScroll += scrollPos;
       scrollPos -= (scrollPos + scrollTarget) * 0.1;
       scrollTarget *= 0.9;
       currentScroll += scrollPos;
-
-      // console.log(scrollPos);
 
       if (!$items) return;
       let wholeHeight = $items.length * positionImg - gap - height;
@@ -126,12 +121,12 @@ const Carousel = ({ projets }: any) => {
   /*--------------------
   Handle Wheel
   --------------------*/
-  const handleWheel = (e: any) => {
-    scrollTarget = e.deltaY / 3;
+  const handleWheel = () => {
+    // scrollTarget = e.deltaY / 3;
 
     const windowHeight = window.innerHeight;
     if (!refItems.current) return;
-    const containerTop = (refItems.current.position.y + currentScroll) / 100;
+    const containerTop = (refItems.current.position.y + currentScroll) / 2;
 
     let visibleIndex = 0;
 
@@ -162,7 +157,7 @@ const Carousel = ({ projets }: any) => {
     });
     if (!progressRound) return;
     progressRound.style.rotate =
-      currentProgress + currentScroll / progress + "deg";
+      currentProgress + (currentScroll / progress) * 100 + "deg";
   };
 
   useEffect(() => {
@@ -203,7 +198,10 @@ const Carousel = ({ projets }: any) => {
         },
       }
     );
-  }, []);
+    scroller.on((e) => {
+      handleWheel();
+    });
+  }, [scroller]);
 
   /*--------------------
   Render Plane Events
