@@ -54,6 +54,8 @@ const Carousel = ({ projets }: any) => {
 
   const scroller = new VirtualScroll();
 
+  const wW = window.innerWidth;
+
   /*--------------------
   RAF
   --------------------*/
@@ -63,13 +65,18 @@ const Carousel = ({ projets }: any) => {
     if (!refItems.current) return;
 
     scroller.on((e) => {
-      scrollTarget = e.deltaY / 3;
+      scrollTarget = e.deltaY / 10;
       // handleWheel(e);
     });
     if (scrollIn === true) {
-      scrollPos -= (scrollPos + scrollTarget) * 0.3;
-      scrollTarget *= 0.9;
+      // scrollPos -= (scrollPos + scrollTarget) * 0.1;
+      // scrollTarget *= 0.9;
+      // currentScroll += scrollPos;
+      scrollPos -= (scrollPos + scrollTarget) * 0.9;
+      scrollTarget *= 0.1;
       currentScroll += scrollPos;
+
+      // console.log(scrollPos);
 
       if (!$items) return;
       let wholeHeight = ($items.length * positionImg - gap - height) * 100;
