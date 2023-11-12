@@ -65,7 +65,7 @@ const Carousel = ({ projets }: any) => {
     if (!refItems.current) return;
 
     scroller.on((e) => {
-      scrollTarget = e.deltaY / 500;
+      scrollTarget = e.deltaY / 100;
       // handleWheel(e);
     });
     if (scrollIn === true) {
