@@ -9,20 +9,6 @@ import { useEffect } from "react";
 import VirtualScroll from "virtual-scroll";
 
 /*------------------------------
-Plane Settings
-------------------------------*/
-// let width = 4.75;
-// let height = 6.5;
-// let gap = 4;
-let width = 8.8;
-let height = 5.5;
-let gap = 3;
-let positionImg = height + gap;
-let scrollTarget = 0;
-let scrollPos = 0;
-let currentScroll = 0;
-
-/*------------------------------
 Gsap Defaults
 ------------------------------*/
 gsap.defaults({
@@ -56,6 +42,26 @@ const Carousel = ({ projets }: any) => {
 
   const wW = window.innerWidth;
 
+  /*------------------------------
+Plane Settings
+------------------------------*/
+  let width = viewport.width / 1.65;
+  let height = viewport.height / 1.45;
+  let gap: number;
+  if (wW <= 420) {
+    width = viewport.width / 1.25;
+    height = viewport.height / 1.95;
+    gap = 2;
+  } else if (wW > 420 && wW <= 1024) {
+    gap = 1.5;
+  } else {
+    gap = 3;
+  }
+  let positionImg = height + gap;
+  let scrollTarget = 0;
+  let scrollPos = 0;
+  let currentScroll = 0;
+
   /*--------------------
   RAF
   --------------------*/
@@ -70,7 +76,6 @@ const Carousel = ({ projets }: any) => {
       } else {
         scrollTarget = e.deltaY / 500;
       }
-      // handleWheel(e);
     });
     if (scrollIn === true) {
       scrollPos -= (scrollPos + scrollTarget) * 0.1;
@@ -122,8 +127,6 @@ const Carousel = ({ projets }: any) => {
   Handle Wheel
   --------------------*/
   const handleWheel = () => {
-    // scrollTarget = e.deltaY / 3;
-
     const windowHeight = window.innerHeight;
     if (!refItems.current) return;
     const containerTop = (refItems.current.position.y + currentScroll) / 2;
@@ -201,7 +204,7 @@ const Carousel = ({ projets }: any) => {
     scroller.on((e) => {
       handleWheel();
     });
-  }, [refItems.current]);
+  }, [refItems.current, handleWheel]);
 
   /*--------------------
   Render Plane Events
