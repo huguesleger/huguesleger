@@ -20,8 +20,6 @@ const CarouselItem = ({
   const [isCloseActive, setCloseActive] = useState(false);
   const { viewport } = useThree();
   const timeoutID = useRef<any>();
-  const router = useRouter();
-  const pathname = usePathname();
 
   useEffect(() => {
     if (activePlane === index) {
@@ -45,12 +43,6 @@ const CarouselItem = ({
       ease: "power3.out",
       delay: isActive ? 0 : 2,
     });
-    // gsap.to($root.current.parent.parent.parent.rotation, {
-    //   z: isActive ? 0 : 0.08,
-    //   duration: 0.2,
-    //   ease: "power3.out",
-    //   delay: isActive ? 0 : 2,
-    // });
     gsap.to($root.current.scale, {
       x: isActive ? 0.8 : 1,
       y: isActive ? 0.8 : 1,
@@ -84,7 +76,6 @@ const CarouselItem = ({
 
   const handleClick = () => {
     setActivePlane(index);
-    const path = pathname + "/" + item.slug;
     const wrapperEl = document.querySelector(".wrap-works");
     const tl = gsap.timeline();
     tl.to(wrapperEl, {
@@ -92,9 +83,6 @@ const CarouselItem = ({
       duration: 0.5,
       ease: "power3.out",
     });
-    setTimeout(function () {
-      router.push(path);
-    }, 690);
   };
 
   const handleClose = (e: any) => {

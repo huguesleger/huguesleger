@@ -4,13 +4,17 @@ import { useEffect, useMemo, useRef } from "react";
 import { MeshProps, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import gsap from "gsap";
+import { usePathname, useRouter } from "next/navigation";
 
-const Plane = ({ texture, width, height, active, ...props }: any) => {
+const Plane = ({ texture, width, height, active, name, ...props }: any) => {
   const $mesh = useRef<any>();
   const { viewport } = useThree();
   const tex: any = useTexture(texture);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
+    const path = pathname + "/" + name;
     if ($mesh.current.material) {
       //  Setting the 'uZoomScale' uniform in the 'Plane' component to resize the texture proportionally to the dimensions of the viewport.
       $mesh.current.material.uniforms.uZoomScale.value.x =
@@ -22,6 +26,11 @@ const Plane = ({ texture, width, height, active, ...props }: any) => {
         value: active ? 1 : 0,
         duration: 2.5,
         ease: "power3.out",
+        onComplete: () => {
+          if (active) {
+            router.push(path);
+          }
+        },
       });
 
       gsap.to($mesh.current.material.uniforms.uRes.value, {
