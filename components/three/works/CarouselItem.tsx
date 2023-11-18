@@ -94,7 +94,7 @@ const CarouselItem = ({
     });
     setTimeout(function () {
       router.push(path);
-    }, 1520);
+    }, 600);
   };
 
   const handleClose = (e: any) => {

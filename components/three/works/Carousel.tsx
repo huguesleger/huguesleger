@@ -35,8 +35,6 @@ const Carousel = ({ projets }: any) => {
   const $items = useMemo(() => {
     if ($root) return $root.parent?.children;
   }, [$root]);
-  let currentProgress = 0;
-  let progress = 100 / works.length - 1;
 
   const scroller = new VirtualScroll();
 
@@ -57,6 +55,7 @@ Plane Settings
   } else {
     gap = 3;
   }
+
   let positionImg = height + gap;
   let scrollTarget = 0;
   let scrollPos = 0;
@@ -116,9 +115,7 @@ Plane Settings
       });
     }
 
-    if (activePlane !== null) {
-      const newScroll = refItems.current.position.y * 100;
-      currentScroll = newScroll;
+    if (activePlane != null) {
       setScrollIn(false);
     }
   });
@@ -159,8 +156,7 @@ Plane Settings
       }
     });
     if (!progressRound) return;
-    progressRound.style.rotate =
-      currentProgress + (currentScroll / progress) * 100 + "deg";
+    progressRound.style.rotate = currentScroll * 10 + "deg";
   };
 
   useEffect(() => {
@@ -169,42 +165,51 @@ Plane Settings
     if (!wrapperCanvas) return;
     wrapperCanvas.classList.add("disabled-scroll");
     if (!refItems.current) return;
-    tl.fromTo(
-      refItems.current.children[0].position,
-      {
-        y: -10,
-        duration: 1,
-        ease: "Power2.easeInOut",
-      },
-      {
-        y: 0,
-        duration: 1,
-        ease: "Power2.easeInOut",
-        onStart: () => {
-          gsap.fromTo(
-            refItems.current.children[0].children[0].children[0].material
-              .uniforms.uProgress,
-            {
-              value: 0.5,
-              duration: 1.5,
-              ease: "Power2.easeInOut",
-            },
-            {
-              value: 0,
-              duration: 1.5,
-              ease: "Power2.easeInOut",
-            }
-          );
+    if (activePlane == null) {
+      tl.fromTo(
+        refItems.current.children[0].position,
+        {
+          y: -10,
+          duration: 1,
+          ease: "Power2.easeInOut",
         },
-        onComplete: () => {
-          wrapperCanvas.classList.remove("disabled-scroll");
-        },
-      }
-    );
+        {
+          y: 0,
+          duration: 1,
+          ease: "Power2.easeInOut",
+          onStart: () => {
+            gsap.fromTo(
+              refItems.current.children[0].children[0].children[0].material
+                .uniforms.uProgress,
+              {
+                value: 0.5,
+                duration: 1.5,
+                ease: "Power2.easeInOut",
+              },
+              {
+                value: 0,
+                duration: 1.5,
+                ease: "Power2.easeInOut",
+              }
+            );
+          },
+          onComplete: () => {
+            wrapperCanvas.classList.remove("disabled-scroll");
+          },
+        }
+      );
+    }
     scroller.on((e) => {
       handleWheel();
     });
   }, [refItems.current, handleWheel]);
+
+  useEffect(() => {
+    if (activePlane != null) {
+      const newScroll = refItems.current.position.y;
+      currentScroll = newScroll;
+    }
+  }, [activePlane]);
 
   /*--------------------
   Render Plane Events
