@@ -39,12 +39,28 @@ export default function RealisationPage({ data }: any) {
     gsap.registerPlugin(ScrollTrigger);
 
     const windowWidth = window.innerWidth;
-    let heightRound: any;
-    if (windowWidth >= 1200) {
-      heightRound = 94;
-    } else {
+    let heightRound: number;
+    if (windowWidth <= 420) {
       heightRound = 35;
+    } else if (windowWidth > 420 && windowWidth <= 768) {
+      heightRound = 55;
+    } else if (windowWidth > 768 && windowWidth <= 1024) {
+      heightRound = 75;
+    } else {
+      heightRound = 94;
     }
+    window.addEventListener("resize", function () {
+      if (windowWidth <= 420) {
+        heightRound = 35;
+      } else if (windowWidth > 420 && windowWidth <= 768) {
+        heightRound = 55;
+      } else if (windowWidth > 768 && windowWidth <= 1024) {
+        heightRound = 75;
+      } else {
+        heightRound = 94;
+      }
+    });
+
     scroll?.on("scroll", ScrollTrigger.update);
     ScrollTrigger.scrollerProxy("[data-scroll-container]", {
       scrollTop(value) {

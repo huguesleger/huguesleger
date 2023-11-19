@@ -28,6 +28,7 @@ const IdentityGraphique = ({ props }: any) => {
                   width={el.image.width}
                   height={el.image.height}
                   alt={el.image.alt}
+                  className="img-responsive"
                 />
               </div>
             );
@@ -49,6 +50,7 @@ const IdentityGraphique = ({ props }: any) => {
                   width={el.image.width}
                   height={el.image.height}
                   alt={el.image.alt}
+                  className="img-responsive"
                 />
               </div>
             );

@@ -6,7 +6,7 @@
     }
     .desc {
       color: $light_grey;
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 0.7289rem + 1.2048vw, 1.5rem);
       font-weight: 200;
     }
   }
@@ -18,9 +18,18 @@
       .block-img {
         width: 600px;
         padding: 2rem;
-        img {
-          max-width: 100%;
-          height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .project-identity {
+    .wrap-img {
+      .inner-img {
+        .block-img {
+          width: 300px;
+          padding: 1rem;
         }
       }
     }

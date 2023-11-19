@@ -17,16 +17,16 @@
     display: flex;
     justify-content: flex-end;
     .inner-desc {
-      padding: 5rem;
+      padding: clamp(0rem, -1.6667rem + 7.4074vw, 5rem);
       max-width: 650px;
       h2 {
-        font-size: 3rem;
+        font-size: clamp(1.5rem, 1rem + 2.2222vw, 3rem);
         font-weight: 700;
         padding-bottom: 2rem;
       }
       p {
         color: $light_grey;
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 0.7289rem + 1.2048vw, 1.5rem);
         font-weight: 200;
         margin-bottom: 1rem;
       }
@@ -35,6 +35,23 @@
         font-family: $font_gallient;
         font-weight: 700;
         text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media (max-width: 858px) {
+  .project-card {
+    .wrap-cards {
+      display: block;
+      .card {
+        max-width: 100%;
+        padding: 2rem 0;
+      }
+    }
+    .wrap-desc {
+      .inner-desc {
+        max-width: 100%;
       }
     }
   }

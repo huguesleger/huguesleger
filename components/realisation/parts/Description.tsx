@@ -12,7 +12,7 @@ const Description = ({ props }: any) => {
             <div className="inner-desc">
               <h2>{formatTxt(desc.titreKeyword)}</h2>
             </div>
-            <div className="inner-desc">
+            <div className="inner-desc desc">
               <StructuredText data={desc.description} />
             </div>
           </div>

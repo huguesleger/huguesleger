@@ -1,6 +1,9 @@
 .page-realisation-detail {
   .section {
     padding: 4rem 0;
+    &.project-color {
+      padding-bottom: 0;
+    }
   }
   .link-website {
     display: inline-flex;

@@ -12,6 +12,7 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+  overflow: hidden;
   @include themed {
     background-color: theme("primary");
   }
@@ -26,6 +27,7 @@ body {
 .img-responsive {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 .content {
@@ -36,8 +38,8 @@ body {
   text-transform: uppercase;
 }
 
-@media (max-width: 1023px) {
-  #app {
-    position: relative;
-  }
-}
+// @media (max-width: 1023px) {
+//   #app {
+//     position: relative;
+//   }
+// }

@@ -14,7 +14,7 @@
   .wrap-title {
     margin-top: auto;
     .title-project {
-      font-size: 12rem;
+      font-size: 12vw;
       font-family: $font_gallient;
       text-transform: uppercase;
       line-height: 1;
@@ -22,8 +22,8 @@
   }
   .wrap-infos {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: clamp(2rem, 0.6667rem + 5.9259vw, 6rem);
     overflow: hidden;
     margin-top: auto;
     padding-bottom: 2rem;
