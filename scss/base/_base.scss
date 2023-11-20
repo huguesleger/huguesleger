@@ -38,8 +38,8 @@ body {
   text-transform: uppercase;
 }
 
-// @media (max-width: 1023px) {
-//   #app {
-//     position: relative;
-//   }
-// }
+@media (max-width: 1023px) {
+  #app {
+    position: relative;
+  }
+}

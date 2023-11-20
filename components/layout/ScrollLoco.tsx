@@ -18,14 +18,6 @@ const ScrollLoco = ({ children }: ScrollType): JSX.Element => {
     <LocomotiveScrollProvider
       options={{
         smooth: true,
-        // reloadOnContextChange: true,
-        smartphone: {
-          smooth: !0,
-        },
-        tablet: {
-          smooth: !0,
-          breakpoint: 1024,
-        },
       }}
       watch={[]}
       location={asPath}
@@ -35,10 +27,6 @@ const ScrollLoco = ({ children }: ScrollType): JSX.Element => {
           duration: 800,
           disableLerp: true,
         });
-        // const intro = document.querySelector(".intro");
-        // setTimeout(() => {
-        //   intro?.classList.add("is-show");
-        // }, 1500);
       }}
       containerRef={containerRef}
     >

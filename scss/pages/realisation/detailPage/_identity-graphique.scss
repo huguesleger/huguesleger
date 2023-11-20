@@ -27,8 +27,9 @@
   .project-identity {
     .wrap-img {
       .inner-img {
+        flex-wrap: wrap;
         .block-img {
-          width: 300px;
+          width: 100%;
           padding: 1rem;
         }
       }
