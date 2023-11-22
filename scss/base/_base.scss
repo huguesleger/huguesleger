@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: $font_poppins;
   line-height: 1.5;
@@ -38,8 +43,8 @@ body {
   text-transform: uppercase;
 }
 
-@media (max-width: 1023px) {
-  #app {
-    position: relative;
-  }
-}
+// @media (max-width: 1023px) {
+//   #app {
+//     position: relative;
+//   }
+// }

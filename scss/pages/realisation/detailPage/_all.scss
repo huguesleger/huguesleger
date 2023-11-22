@@ -56,3 +56,10 @@
     padding-bottom: 4rem !important;
   }
 }
+
+@media (max-width: 1023px) {
+  .page-realisation-detail {
+    height: 100%;
+    overflow: scroll;
+  }
+}
