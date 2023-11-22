@@ -30,14 +30,20 @@
   .block-bottom {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    height: 180px;
+    left: clamp(1rem, -0.2536rem + 5.1429vw, 4.375rem);
+    right: clamp(1rem, -0.2536rem + 5.1429vw, 4.375rem);
     .wrap-enter {
       position: relative;
       display: flex;
       align-items: flex-end;
       pointer-events: initial;
       padding-top: 0.5rem;
+      margin-top: 1.5rem;
       svg {
         position: absolute;
         top: -100%;
