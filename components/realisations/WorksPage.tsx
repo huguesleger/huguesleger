@@ -20,7 +20,10 @@ export default function WorksPage({ data }: any) {
 
   useEffect(() => {
     setPageName("page-realisations");
-    return () => {};
+    document.querySelector("html")?.classList.add("overflow-hidden");
+    return () => {
+      document.querySelector("html")?.classList.remove("overflow-hidden");
+    };
   }, []);
 
   return (

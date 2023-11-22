@@ -24,6 +24,10 @@ body {
   }
 }
 
+.overflow-hidden #app {
+  overflow: hidden;
+}
+
 .img-cover {
   object-fit: cover;
   width: 100%;

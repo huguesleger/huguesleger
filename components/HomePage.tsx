@@ -31,6 +31,10 @@ const Intro = ({
 
   useEffect(() => {
     setPageName("page-home");
+    document.querySelector("html")?.classList.add("overflow-hidden");
+    return () => {
+      document.querySelector("html")?.classList.remove("overflow-hidden");
+    };
   }, []);
 
   return (

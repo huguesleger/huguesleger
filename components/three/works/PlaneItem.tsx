@@ -24,7 +24,7 @@ const Plane = ({ texture, width, height, active, name, ...props }: any) => {
 
       gsap.to($mesh.current.material.uniforms.uProgress, {
         value: active ? 1 : 0,
-        duration: 2.5,
+        duration: 1.5,
         ease: "power3.out",
         onComplete: () => {
           if (active) {
