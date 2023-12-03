@@ -22,16 +22,45 @@ const Plane = ({ texture, width, height, active, name, ...props }: any) => {
       $mesh.current.material.uniforms.uZoomScale.value.y =
         viewport.height / height;
 
-      gsap.to($mesh.current.material.uniforms.uProgress, {
-        value: active ? 1 : 0,
-        duration: 1.5,
-        ease: "power3.out",
-        onComplete: () => {
-          if (active) {
-            router.push(path);
-          }
+      const wrapperCanvas = document.querySelector(".wrapper-canvas");
+      if (!wrapperCanvas) return;
+      wrapperCanvas.classList.add("disabled-scroll");
+      gsap.fromTo(
+        $mesh.current.position,
+        {
+          y: active ? 0 : -5,
+          duration: 1,
+          ease: "Power2.easeInOut",
         },
-      });
+        {
+          y: 0,
+          duration: 1,
+          ease: "Power2.easeInOut",
+          onStart: () => {
+            gsap.fromTo(
+              $mesh.current.material.uniforms.uProgress,
+              {
+                value: active ? 0 : 0.5,
+                duration: 1.5,
+                ease: "power3.out",
+              },
+              {
+                value: active ? 1 : 0,
+                duration: 1.5,
+                ease: "power3.out",
+                onComplete: () => {
+                  if (active) {
+                    router.push(path);
+                  }
+                },
+              }
+            );
+          },
+          onComplete: () => {
+            wrapperCanvas.classList.remove("disabled-scroll");
+          },
+        }
+      );
 
       gsap.to($mesh.current.material.uniforms.uRes.value, {
         x: active ? viewport.width : width,

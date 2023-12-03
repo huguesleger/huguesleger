@@ -6,7 +6,7 @@ const WorksInfos = ({ props }: any) => {
     <div className="wrap-infos">
       {worksInfos.map((el: any, i: any) => {
         return (
-          <div className={i === 0 ? "info-work active" : "info-work"} key={i}>
+          <div className="info-work" key={i}>
             <h3 className="work-link">{el.titre}</h3>
           </div>
         );

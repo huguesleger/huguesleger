@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import PlaneItem from "./PlaneItem";
-import { usePathname, useRouter } from "next/navigation";
+import { useAppContext } from "@/app/context/AppContext";
 
 const CarouselItem = ({
   index,
@@ -21,6 +21,8 @@ const CarouselItem = ({
   const { viewport } = useThree();
   const timeoutID = useRef<any>();
 
+  let { setVisibleEl } = useAppContext();
+
   useEffect(() => {
     if (activePlane === index) {
       setIsActive(activePlane === index);
@@ -36,6 +38,7 @@ const CarouselItem = ({
     const posWrapper = $root.current.parent.parent.position.y;
     const newPos = posImg - posWrapper;
     gsap.killTweensOf($root.current.position);
+
     gsap.to($root.current.position, {
       y: isActive ? newPos : 0,
       z: isActive ? 1 : -0.01,
@@ -43,6 +46,7 @@ const CarouselItem = ({
       ease: "power3.out",
       delay: isActive ? 0 : 2,
     });
+
     gsap.to($root.current.scale, {
       x: isActive ? 0.8 : 1,
       y: isActive ? 0.8 : 1,
@@ -83,6 +87,7 @@ const CarouselItem = ({
       duration: 0.5,
       ease: "power3.out",
     });
+    setVisibleEl(index);
   };
 
   const handleClose = (e: any) => {
