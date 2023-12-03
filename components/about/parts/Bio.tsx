@@ -28,7 +28,7 @@ const Bio = ({ props }: any) => {
             <div className="col-img">
               <div className="inner-img">
                 <Image
-                  className="img-responsive"
+                  className="img-cover"
                   src={bio.imageBio.url}
                   width={bio.imageBio.width}
                   height={bio.imageBio.height}

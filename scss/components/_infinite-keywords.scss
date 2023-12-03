@@ -6,7 +6,7 @@
     display: flex;
     flex-shrink: 0;
     min-width: 100%;
-    font-size: 8rem;
+    font-size: clamp(4rem, 2.5915rem + 6.0094vw, 8rem);
     animation: infiniteKeyword 10s linear infinite;
     animation-play-state: running;
     perspective: 8000px;
@@ -16,8 +16,11 @@
       .separate-keyword {
         display: flex;
         align-items: center;
-        font-size: 2rem;
         padding: 0 2rem;
+        svg {
+          width: clamp(1rem, 0.6479rem + 1.5023vw, 2rem);
+          height: clamp(1rem, 0.6479rem + 1.5023vw, 2rem);
+        }
       }
     }
     .keyword-bold {

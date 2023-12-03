@@ -4,15 +4,16 @@
     gap: 6rem;
     padding-top: 5rem;
     overflow: hidden;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
   .list-items {
     padding-left: 1rem;
     gap: 3rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .wrap-items,
   .list-items {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     .inner-item {
       overflow: hidden;
       .number-item {
@@ -33,7 +34,7 @@
       }
       .title-item {
         position: relative;
-        font-size: 2.375rem;
+        font-size: clamp(2rem, 1.868rem + 0.5634vw, 2.375rem);
         font-family: $font_gallient;
         text-transform: uppercase;
         margin-bottom: 1.5rem;

@@ -1,11 +1,16 @@
 import React, { useEffect } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
+import VirtualScroll from "virtual-scroll";
 
 const CircleText = ({ props }: any) => {
   const circleText = props;
 
   const { scroll } = useLocomotiveScroll();
   let scrollTarget = 0;
+  let scrollPos = 0;
+  let currentScroll = 0;
+  let scrollDelta = 0;
+  const scroller = new VirtualScroll();
 
   useEffect(() => {
     const txt = document.querySelectorAll(".circles-text");
@@ -15,6 +20,15 @@ const CircleText = ({ props }: any) => {
         scrollTarget = scroll.scroll.instance.scroll.y / 10;
         txt.forEach((el: any) => {
           el.style.transform = "rotate(" + scrollTarget + "deg)";
+        });
+      });
+    } else {
+      scroller.on((e) => {
+        scrollDelta = e.deltaY / 50;
+        scrollPos -= (scrollPos + scrollDelta) * 0.1;
+        currentScroll += scrollPos;
+        txt.forEach((el: any) => {
+          el.style.transform = "rotate(" + currentScroll + "deg)";
         });
       });
     }

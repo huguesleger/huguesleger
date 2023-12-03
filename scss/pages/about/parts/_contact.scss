@@ -16,7 +16,7 @@
       .inner-title {
         overflow: hidden;
         .title-contact {
-          font-size: 1.5rem;
+          font-size: clamp(1.25rem, 1.162rem + 0.3756vw, 1.5rem);
           font-weight: 300;
           padding-top: 3rem;
         }
@@ -26,7 +26,7 @@
         padding-top: 2rem;
         .copy-email {
           font-family: $font_gallient;
-          font-size: 6rem;
+          font-size: clamp(2rem, 0.5915rem + 6.0094vw, 6rem);
           line-height: 1.1;
           text-transform: uppercase;
         }

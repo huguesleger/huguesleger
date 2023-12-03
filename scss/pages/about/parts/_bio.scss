@@ -20,12 +20,36 @@
       .icon {
         display: inline-flex;
         margin-left: 1rem;
+        svg {
+          width: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+          height: clamp(2rem, 1.6479rem + 1.5023vw, 3rem);
+        }
       }
     }
     .col-img {
       width: 30%;
       .inner-img {
         overflow: hidden;
+      }
+    }
+  }
+}
+
+@media (max-width: 749px) {
+  .section-bio {
+    .wrap-content {
+      flex-wrap: wrap;
+      .col-txt {
+        width: 100%;
+        .inner-txt {
+          padding-bottom: 3rem;
+        }
+      }
+      .col-img {
+        width: 100%;
+        .inner-img {
+          height: 550px;
+        }
       }
     }
   }
