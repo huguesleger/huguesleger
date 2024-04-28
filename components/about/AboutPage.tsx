@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/app/context/AppContext";
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { HtmlHTMLAttributes, useEffect, useRef } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Bio from "./parts/Bio";
 import CircleText from "./parts/CircleText";
@@ -21,6 +21,10 @@ const AboutPage = ({ data }: any) => {
 
   useEffect(() => {
     setPageName("page-about");
+    document.querySelector("html")?.classList.add("overflow-hidden");
+    return () => {
+      document.querySelector("html")?.classList.remove("overflow-hidden");
+    };
   }, []);
 
   useEffect(() => {

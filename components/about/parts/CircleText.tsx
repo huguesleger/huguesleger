@@ -11,6 +11,18 @@ const CircleText = ({ props }: any) => {
   let currentScroll = 0;
   let scrollDelta = 0;
   const scroller = new VirtualScroll();
+  const wW = window.innerWidth;
+
+  const handleScroll = (e: any) => {
+    const txt = document.querySelectorAll(".circles-text");
+
+    scrollDelta = e.deltaY / 50;
+    scrollPos -= (scrollPos + scrollDelta) * 0.1;
+    currentScroll += scrollPos;
+    txt.forEach((el: any) => {
+      el.style.transform = "rotate(" + currentScroll + "deg)";
+    });
+  };
 
   useEffect(() => {
     const txt = document.querySelectorAll(".circles-text");
@@ -22,15 +34,11 @@ const CircleText = ({ props }: any) => {
           el.style.transform = "rotate(" + scrollTarget + "deg)";
         });
       });
+    }
+    if (wW < 1024) {
+      scroller.on(handleScroll);
     } else {
-      scroller.on((e) => {
-        scrollDelta = e.deltaY / 50;
-        scrollPos -= (scrollPos + scrollDelta) * 0.1;
-        currentScroll += scrollPos;
-        txt.forEach((el: any) => {
-          el.style.transform = "rotate(" + currentScroll + "deg)";
-        });
-      });
+      scroller.off(handleScroll);
     }
   }, [scroll]);
 
