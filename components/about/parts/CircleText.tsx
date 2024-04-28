@@ -10,8 +10,6 @@ const CircleText = ({ props }: any) => {
   let scrollPos = 0;
   let currentScroll = 0;
   let scrollDelta = 0;
-  const scroller = new VirtualScroll();
-  const wW = window.innerWidth;
 
   const handleScroll = (e: any) => {
     const txt = document.querySelectorAll(".circles-text");
@@ -26,6 +24,8 @@ const CircleText = ({ props }: any) => {
 
   useEffect(() => {
     const txt = document.querySelectorAll(".circles-text");
+    const wW = window.innerWidth;
+    const scroller = new VirtualScroll();
 
     if (scroll) {
       scroll.on("scroll", () => {

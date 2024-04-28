@@ -2,7 +2,7 @@
 
 import { useAppContext } from "@/app/context/AppContext";
 import gsap from "gsap";
-import React, { HtmlHTMLAttributes, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Bio from "./parts/Bio";
 import CircleText from "./parts/CircleText";
